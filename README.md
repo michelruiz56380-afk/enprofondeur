@@ -38,6 +38,20 @@ Les 4 pages ont été générées par ce script : en-tête, bloc contact et pied
 python3 outils/build.py .
 ```
 
+## Site de test sur Hostinger
+
+Le site est publié pour test sur https://legendary-mediumturquoise-fox-24.hostingersite.com, avec l'indexation Google bloquée.
+
+Pour publier l'état actuel du dépôt :
+
+```bash
+outils/deployer-test.sh
+```
+
+Le script met à jour la branche `hostinger-test` (les seuls fichiers servis en ligne, avec le noindex), la pousse sur GitHub, l'envoie sur Hostinger, vide le cache et vérifie que la page répond. **Il remplace tout le contenu du site de test.** La clé d'API Hostinger n'est pas dans le dépôt : dans une session Claude, elle est ajoutée automatiquement ; ailleurs, définir `HOSTINGER_API_TOKEN`.
+
+Pour la mise en ligne définitive sur `enprofondeur.fr`, il ne faudra **pas** reprendre ce script tel quel : il ajoute le noindex et remplacerait le WordPress actuel.
+
 ## Ce qui n'est volontairement pas dans ce dépôt
 
 Le dépôt est **public**. Les éléments suivants restent hors du dépôt pour des raisons de droits ou de vie privée :

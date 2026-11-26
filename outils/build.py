@@ -277,6 +277,7 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
       <div class="mark">Transmettre<small>L’enseignement</small></div>
       <div>
         <p>Enseigner l’apnée au sein de ma fédération est devenu une seconde nature pour moi. J’ai investi dans cette passion en participant activement à des groupes de réflexion, surtout après le succès populaire du « Grand Bleu ». J’ai œuvré à développer un tronc commun en poche pour les brevets d’État de pêche sous-marine et d’apnée.</p>
+        <div class="photo"><img src="img/enfant-apnee.webp" alt="Grégory dans l'eau avec un jeune élève équipé de brassards" loading="lazy"></div>
       </div>
     </article>
 
@@ -348,6 +349,11 @@ coaching = head('Mes différents coachings — En Profondeur',
     </div>
 
     <div class="group-title reveal"><h2>Sport &amp; mer</h2><p>Pour les sportifs, apnéistes et chasseurs sous-marins.</p></div>
+    <div class="strip reveal">
+      <figure class="photo"><img src="img/langoustes.webp" alt="Grégory en combinaison, deux langoustes à la main" loading="lazy"></figure>
+      <figure class="photo"><img src="img/merou.webp" alt="Grégory sur un bateau avec un mérou rouge" loading="lazy"></figure>
+      <figure class="photo"><img src="img/poisson-falaise.webp" alt="Grégory dans l'eau avec un poisson, devant une falaise" loading="lazy"></figure>
+    </div>
     <div class="offers-sm">''' \
     + offer('coaching-sportif', 'Coaching sportif',
             '<p>Je propose un accompagnement personnalisé pour divers sports, y compris la boxe et les Ironman. En plus de l’apnée et de la pêche sous-marine, j’accompagne d’autres sportifs dans l’atteinte de leurs objectifs.</p>',

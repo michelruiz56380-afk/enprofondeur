@@ -113,25 +113,88 @@
     });
   }
 
-  /* ---- Ambiance sonore (opt-in, générée, aucun fichier) ---- */
+  /* ---- Musique d'ambiance douce : générée dans le navigateur, aucun fichier.
+     Ne démarre jamais seule : uniquement au clic sur le bouton. ---- */
+  function createAmbient(){
+    const ac = new (window.AudioContext || window.webkitAudioContext)();
+    const master = ac.createGain(); master.gain.value = 0;
+    const tone = ac.createBiquadFilter(); tone.type = 'lowpass'; tone.frequency.value = 2200; tone.Q.value = .3;
+    // Réverbération douce (salle « aquatique ») fabriquée à la volée
+    const len = ac.sampleRate * 5, ir = ac.createBuffer(2, len, ac.sampleRate);
+    for (let c = 0; c < 2; c++){ const d = ir.getChannelData(c); for (let i = 0; i < len; i++) d[i] = (Math.random()*2-1) * Math.pow(1 - i/len, 2.6); }
+    const verb = ac.createConvolver(); verb.buffer = ir;
+    const wet = ac.createGain(); wet.gain.value = .7;
+    const dry = ac.createGain(); dry.gain.value = .45;
+    tone.connect(dry).connect(master);
+    tone.connect(verb).connect(wet).connect(master);
+    master.connect(ac.destination);
+
+    const hz = m => 440 * Math.pow(2, (m - 69) / 12);
+    // Accords lents et apaisants (Do maj9 → La m9 → Fa maj7 → Sol 6/9)
+    const chords = [[48,55,59,62,64],[45,52,55,59,64],[41,48,52,57,60],[43,50,55,57,62]];
+    const bells = [72,74,76,79,81,84];   // gamme pentatonique : jamais de fausse note
+    const CHORD = 10;                    // secondes par accord
+
+    function pad(notes, t){
+      notes.forEach((m, i) => {
+        [0, 4].forEach(det => {          // deux voix légèrement désaccordées = son chaud
+          const o = ac.createOscillator(), g = ac.createGain();
+          o.type = i === 0 ? 'sine' : 'triangle';
+          o.frequency.value = hz(m); o.detune.value = det ? 6 : -6;
+          const peak = (i === 0 ? .055 : .028);
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(peak, t + 4);
+          g.gain.setValueAtTime(peak, t + CHORD - 1);
+          g.gain.linearRampToValueAtTime(0, t + CHORD + 4);
+          o.connect(g).connect(tone); o.start(t); o.stop(t + CHORD + 4.2);
+        });
+      });
+    }
+    function bell(t){
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = 'sine'; o.frequency.value = hz(bells[Math.floor(Math.random() * bells.length)]);
+      g.gain.setValueAtTime(0, t);
+      g.gain.linearRampToValueAtTime(.022, t + .04);
+      g.gain.exponentialRampToValueAtTime(.0001, t + 4.5);
+      o.connect(g).connect(tone); o.start(t); o.stop(t + 4.6);
+    }
+
+    let next = 0, idx = 0, nextBell = 0, timer = null;
+    function schedule(){
+      const now = ac.currentTime;
+      if (now + 1 > next){ pad(chords[idx++ % chords.length], Math.max(next, now + .1)); next = Math.max(next, now + .1) + CHORD; }
+      if (now + 1 > nextBell){ nextBell = Math.max(nextBell, now) + 3 + Math.random() * 5; bell(nextBell); }
+    }
+    return {
+      on: false,
+      start(){
+        ac.resume(); this.on = true;
+        if (!timer){ next = ac.currentTime + .1; nextBell = next + 2; schedule(); timer = setInterval(schedule, 400); }
+        master.gain.cancelScheduledValues(ac.currentTime);
+        master.gain.setValueAtTime(master.gain.value, ac.currentTime);
+        master.gain.linearRampToValueAtTime(.9, ac.currentTime + 3);   // fondu d'entrée de 3 s
+      },
+      stop(){
+        this.on = false;
+        master.gain.cancelScheduledValues(ac.currentTime);
+        master.gain.setValueAtTime(master.gain.value, ac.currentTime);
+        master.gain.linearRampToValueAtTime(0, ac.currentTime + 1.5);  // fondu de sortie
+        setTimeout(() => { if (!this.on){ clearInterval(timer); timer = null; ac.suspend(); } }, 1700);
+      },
+      // Plus on descend dans la page, plus le son devient feutré
+      setDepth(p){ tone.frequency.setTargetAtTime(2200 - p * 1500, ac.currentTime, .5); }
+    };
+  }
+
   const soundBtn = $('#soundBtn');
   soundBtn && soundBtn.addEventListener('click', () => {
-    if (!audio){
-      const ac = new (window.AudioContext || window.webkitAudioContext)();
-      const len = ac.sampleRate * 4, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
-      let last = 0; for (let i = 0; i < len; i++){ const w = Math.random()*2-1; last = (last + .02*w)/1.02; d[i] = last*3.5; }
-      const src = ac.createBufferSource(); src.buffer = buf; src.loop = true;
-      const lp = ac.createBiquadFilter(); lp.type = 'lowpass';
-      const gain = ac.createGain(); gain.gain.value = 0;
-      src.connect(lp).connect(gain).connect(ac.destination); src.start();
-      audio = { ac, gain, on:false, setDepth(p){ lp.frequency.setTargetAtTime(900 - p*780, ac.currentTime, .3); } };
-      audio.setDepth(progress);
-    }
-    audio.on = !audio.on; audio.ac.resume();
-    audio.gain.gain.setTargetAtTime(audio.on ? .35 : 0, audio.ac.currentTime, .4);
+    if (!audio){ audio = createAmbient(); audio.setDepth(progress); }
+    audio.on ? audio.stop() : audio.start();
     soundBtn.setAttribute('aria-pressed', audio.on);
-    soundBtn.setAttribute('aria-label', audio.on ? "Couper l'ambiance sonore" : "Activer l'ambiance sonore");
+    soundBtn.setAttribute('aria-label', audio.on ? "Couper la musique d'ambiance" : "Activer la musique d'ambiance");
   });
+  // La musique se coupe quand une vidéo ou un podcast démarre
+  document.addEventListener('play', () => { if (audio && audio.on) soundBtn.click(); }, true);
 
   /* ---- Teaser : lecture avec le son au clic ---- */
   const tv = $('#teaserVideo'), tp = $('#teaserPlay');
@@ -148,6 +211,7 @@
     const trigger = box.querySelector('.embed-play, button');
     trigger && trigger.addEventListener('click', () => {
       document.querySelectorAll('video').forEach(v => v.pause());
+      if (audio && audio.on) soundBtn.click();
       const f = document.createElement('iframe');
       f.src = box.dataset.embed;
       f.title = box.dataset.title || '';

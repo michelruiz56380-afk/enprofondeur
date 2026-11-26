@@ -150,7 +150,8 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
       </div>
       <div class="hero2-visual" aria-hidden="false">
         <div class="morph-halo"></div>
-        <div class="morph"><img id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595"></div>
+        <div class="morph"></div>
+        <img class="bust" id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595">
         <span class="orbit o1"></span><span class="orbit o2"></span>
       </div>
     </div>

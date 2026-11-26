@@ -34,7 +34,6 @@ def head(title, desc):
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="glow" aria-hidden="true"></div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <canvas id="snow" aria-hidden="true"></canvas>
 {BADGE}'''
 
@@ -296,6 +295,9 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
     + header('about.html') + '''
 <main>
   <section class="page-head">
+    <svg class="hero-waves page-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>
     <div class="about-head">
       <div>
         <p class="eyebrow reveal">Qui suis-je ?</p>
@@ -417,6 +419,9 @@ coaching = head('Mes différents coachings — En Profondeur',
     + header('coaching.html') + '''
 <main>
   <section class="page-head">
+    <svg class="hero-waves page-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>
     <p class="eyebrow reveal">Les programmes</p>
     <h1 class="emerge">Mes différents <em>coachings</em></h1>
     <p class="lead reveal">Je vous propose une gamme complète de services de coaching adaptés à vos besoins spécifiques, que ce soit pour améliorer votre vie personnelle, vos performances sportives ou votre sécurité en mer. Mon engagement est de vous offrir un accompagnement personnalisé et attentif, en mettant à profit mes compétences et mon expérience pour vous aider à atteindre vos objectifs. Que vous souhaitiez renforcer votre confiance en vous, optimiser votre efficacité ou explorer de nouvelles profondeurs sous-marines, je suis à votre écoute et prêt à vous guider à chaque étape de votre parcours.</p>
@@ -519,6 +524,9 @@ temoignages = head('Témoignages — En Profondeur',
     + header('temoignages.html') + f'''
 <main>
   <section class="page-head">
+    <svg class="hero-waves page-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>
     <p class="eyebrow reveal">Ils vous parlent de leur expérience</p>
     <h1 class="emerge">Ils <em>témoignent…</em></h1>
     <p class="lead reveal">Sept personnes accompagnées racontent avec leurs mots ce que le coaching a changé pour elles.</p>

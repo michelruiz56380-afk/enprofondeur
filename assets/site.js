@@ -112,7 +112,7 @@
     }
   }
 
-  /* ---- Titres qui émergent des profondeurs (mot par mot, avec ondulation) ---- */
+  /* ---- Titres des pages : chaque lettre remonte de la ligne de flottaison ---- */
   document.querySelectorAll('h1.emerge').forEach(h => {
     let i = 0;
     const walk = node => [...node.childNodes].forEach(n => {
@@ -120,26 +120,29 @@
         const frag = document.createDocumentFragment();
         n.textContent.split(/(\s+)/).forEach(part => {
           if (!part) return;
-          if (/^\s+$/.test(part)){ frag.append(part); return; }
-          const s = document.createElement('span'); s.className = 'w'; s.textContent = part;
-          s.style.setProperty('--d', (i++ * .14 + .15) + 's'); frag.append(s);
+          if (/^\s+$/.test(part)){ frag.append(' '); return; }
+          const wd = document.createElement('span'); wd.className = 'wd';
+          [...part].forEach(ch => {
+            const c = document.createElement('span'); c.className = 'ch'; c.textContent = ch;
+            c.style.setProperty('--d', (.2 + i++ * .045).toFixed(3) + 's');
+            wd.append(c);
+          });
+          frag.append(wd);
         });
         n.replaceWith(frag);
       } else if (n.nodeType === 1) walk(n);
     });
     walk(h);
+    // Garde un seul dégradé continu sur le mot en couleur, lettre par lettre
+    h.querySelectorAll('em').forEach(em => {
+      const w = em.getBoundingClientRect().width, x0 = em.getBoundingClientRect().left;
+      em.querySelectorAll('.ch').forEach(c => {
+        c.style.backgroundSize = w + 'px 100%';
+        c.style.backgroundPosition = (x0 - c.getBoundingClientRect().left) + 'px 0';
+      });
+    });
     h.classList.add('go');
   });
-  const disp = document.querySelector('#water feDisplacementMap');
-  if (disp && !reduce && document.querySelector('h1.emerge')){
-    const t0 = performance.now();
-    (function ripple(now){
-      const k = Math.min(1, (now - t0) / 2600);
-      disp.setAttribute('scale', (38 * Math.pow(1 - k, 2)).toFixed(2));
-      if (k < 1) requestAnimationFrame(ripple);
-      else document.querySelectorAll('h1.emerge').forEach(h => h.style.filter = 'none');
-    })(t0);
-  }
 
   /* ---- Particules en suspension ---- */
   const cv = $('#snow'), cx = cv.getContext('2d');

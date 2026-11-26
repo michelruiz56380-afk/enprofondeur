@@ -13,6 +13,7 @@
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="glow" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <canvas id="snow" aria-hidden="true"></canvas>
 
 <header class="site">
@@ -51,7 +52,10 @@
       </div>
     </div>
     <a class="scroll-cue" href="#teaser" aria-label="Faire défiler"><span></span></a>
-    <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path id="w1"/><path id="w2"/></svg>
+    <svg class="hero-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>
+    <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-wave="fill-bottom 14 48 1600 0"/><path data-wave="fill-bottom 10 66 2100 1"/></svg>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee-track">
@@ -188,6 +192,7 @@
     <a class="more reveal" href="temoignages.html">Lire les 7 témoignages et voir les vidéos →</a>
   </section>
 
+  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
   <section id="contact">
     <div class="fond">
       <div>

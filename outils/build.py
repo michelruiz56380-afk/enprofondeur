@@ -34,6 +34,7 @@ def head(title, desc):
 <body>
 <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
 <div id="glow" aria-hidden="true"></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="water" x="-10%" y="-30%" width="120%" height="160%"><feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves="2" seed="3" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="0" xChannelSelector="R" yChannelSelector="G"/></filter></svg>
 <canvas id="snow" aria-hidden="true"></canvas>
 {BADGE}'''
 
@@ -65,6 +66,7 @@ def header(current):
 
 
 CONTACT = f'''
+  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
   <section id="contact">
     <div class="fond">
       <div>
@@ -136,7 +138,10 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
       </div>
     </div>
     <a class="scroll-cue" href="#teaser" aria-label="Faire défiler"><span></span></a>
-    <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path id="w1"/><path id="w2"/></svg>
+    <svg class="hero-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>
+    <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-wave="fill-bottom 14 48 1600 0"/><path data-wave="fill-bottom 10 66 2100 1"/></svg>
   </section>
 
   <div class="marquee" aria-hidden="true"><div class="marquee-track">
@@ -281,7 +286,7 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
     <div class="about-head">
       <div>
         <p class="eyebrow reveal">Qui suis-je ?</p>
-        <h1 class="reveal">Grégory <em>Ortiz</em></h1>
+        <h1 class="emerge">Grégory <em>Ortiz</em></h1>
         <p class="intro reveal">Je suis Grégory Ortiz, enfant des montagnes grenobloises, dont le cœur a été capturé par l’appel du grand large. Ma passion pour l’apnée et la pêche sous-marine a été inspirée par les exploits de Jacques Mayol et immortalisée par le cinéma. Je suis devenu compétiteur, formateur, et même pêcheur professionnel, toujours en quête d’harmonie avec la mer.</p>
         <p class="lead reveal" style="margin-top:16px">À travers l’enseignement, j’ai partagé mon savoir et ma passion pour l’apnée, en prenant soin de véhiculer les valeurs d’écologie et de respect de la nature. Mon parcours est un témoignage vivant de la manière dont une passion peut guider une vie et inspirer les autres.</p>
       </div>
@@ -289,6 +294,7 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
     </div>
   </section>
 
+  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
   <section class="story" style="padding-top:2vh">
     <article class="chapter reveal">
       <div class="mark">Grenoble<small>Les origines</small></div>
@@ -399,10 +405,11 @@ coaching = head('Mes différents coachings — En Profondeur',
 <main>
   <section class="page-head">
     <p class="eyebrow reveal">Les programmes</p>
-    <h1 class="reveal">Mes différents <span class="ring-word">coachings<svg viewBox="0 0 300 100" preserveAspectRatio="none" aria-hidden="true"><path d="M150 8 C 255 6, 296 30, 292 52 C 288 80, 200 94, 140 92 C 60 90, 8 76, 8 50 C 8 22, 80 6, 165 10"/></svg></span></h1>
+    <h1 class="emerge">Mes différents <em>coachings</em></h1>
     <p class="lead reveal">Je vous propose une gamme complète de services de coaching adaptés à vos besoins spécifiques, que ce soit pour améliorer votre vie personnelle, vos performances sportives ou votre sécurité en mer. Mon engagement est de vous offrir un accompagnement personnalisé et attentif, en mettant à profit mes compétences et mon expérience pour vous aider à atteindre vos objectifs. Que vous souhaitiez renforcer votre confiance en vous, optimiser votre efficacité ou explorer de nouvelles profondeurs sous-marines, je suis à votre écoute et prêt à vous guider à chaque étape de votre parcours.</p>
   </section>
 
+  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
   <section style="padding-top:0">
     <div class="group-title reveal" style="margin-top:0"><h2>Vie &amp; émotions</h2><p>Pour avancer, se libérer du stress, reprendre confiance.</p></div>
     <div class="main-offers">''' \
@@ -500,10 +507,11 @@ temoignages = head('Témoignages — En Profondeur',
 <main>
   <section class="page-head">
     <p class="eyebrow reveal">Ils vous parlent de leur expérience</p>
-    <h1 class="reveal">Ils <em>témoignent…</em></h1>
+    <h1 class="emerge">Ils <em>témoignent…</em></h1>
     <p class="lead reveal">Sept personnes accompagnées racontent avec leurs mots ce que le coaching a changé pour elles.</p>
   </section>
 
+  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
   <section style="padding-top:0">
     <div class="tgrid">{''.join(T)}
     </div>

@@ -433,3 +433,6 @@ h1.emerge em .ch{background-image:linear-gradient(100deg,var(--teal),#9ad8ff 45%
 .page-head{position:relative}
 .page-head>*:not(.page-waves){position:relative;z-index:1}
 .page-waves{left:50%;width:100vw;transform:translateX(-50%);height:min(62vh,520px);top:0}
+
+/* La descente en apnée reste en couleur : le bleu fait la profondeur */
+.strip .photo.color img{filter:none}

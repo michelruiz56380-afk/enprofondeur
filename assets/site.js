@@ -86,13 +86,57 @@
     el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el);
   });
 
-  /* ---- Vagues de la carte héros (accueil) ---- */
-  const w1 = $('#w1'), w2 = $('#w2');
-  function wave(t, amp, off, sp){
-    let d = 'M0 ' + off;
-    for (let x = 0; x <= 1440; x += 30)
-      d += ` L${x} ${off + Math.sin(x/220 + t/sp)*amp + Math.sin(x/90 + t/(sp*.7))*amp*.3}`;
-    return d + ' L1440 120 L0 120 Z';
+  /* ---- Vagues animées (héros, séparations) : seulement quand elles sont visibles ---- */
+  const waves = [...document.querySelectorAll('path[data-wave]')].map(el => {
+    const [mode, amp, off, sp, ph] = el.dataset.wave.split(' ');
+    const svg = el.ownerSVGElement;
+    return { el, svg, mode, amp:+amp, off:+off, sp:+sp, ph:+ph, H: svg.viewBox.baseVal.height };
+  });
+  const visibleSvg = new Set();
+  const wio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? visibleSvg.add(e.target) : visibleSvg.delete(e.target)));
+  new Set(waves.map(w => w.svg)).forEach(s => wio.observe(s));
+  function drawWaves(t){
+    for (const w of waves){
+      if (!visibleSvg.has(w.svg) && t) continue;
+      const T = t + w.ph * 1700;
+      let d = '';
+      for (let x = 0; x <= 1440; x += 30){
+        const y = w.off + Math.sin(x / 230 + T / w.sp) * w.amp + Math.sin(x / 95 + T / (w.sp * .7)) * w.amp * .35;
+        d += (x ? ' L' : 'M') + x + ' ' + y.toFixed(1);
+      }
+      if (w.mode === 'fill-top') d = 'M0 0 L' + d.slice(1) + ' L1440 0 Z';
+      else if (w.mode === 'fill-bottom') d += ` L1440 ${w.H} L0 ${w.H} Z`;
+      w.el.setAttribute('d', d);
+    }
+  }
+
+  /* ---- Titres qui émergent des profondeurs (mot par mot, avec ondulation) ---- */
+  document.querySelectorAll('h1.emerge').forEach(h => {
+    let i = 0;
+    const walk = node => [...node.childNodes].forEach(n => {
+      if (n.nodeType === 3){
+        const frag = document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(part => {
+          if (!part) return;
+          if (/^\s+$/.test(part)){ frag.append(part); return; }
+          const s = document.createElement('span'); s.className = 'w'; s.textContent = part;
+          s.style.setProperty('--d', (i++ * .14 + .15) + 's'); frag.append(s);
+        });
+        n.replaceWith(frag);
+      } else if (n.nodeType === 1) walk(n);
+    });
+    walk(h);
+    h.classList.add('go');
+  });
+  const disp = document.querySelector('#water feDisplacementMap');
+  if (disp && !reduce && document.querySelector('h1.emerge')){
+    const t0 = performance.now();
+    (function ripple(now){
+      const k = Math.min(1, (now - t0) / 2600);
+      disp.setAttribute('scale', (38 * Math.pow(1 - k, 2)).toFixed(2));
+      if (k < 1) requestAnimationFrame(ripple);
+      else document.querySelectorAll('h1.emerge').forEach(h => h.style.filter = 'none');
+    })(t0);
   }
 
   /* ---- Particules en suspension ---- */
@@ -116,7 +160,7 @@
     }
   }
   function loop(t){
-    if (w1){ w1.setAttribute('d', wave(t, 14, 48, 1600)); w2.setAttribute('d', wave(t + 900, 10, 66, 2100)); }
+    drawWaves(t);
     drawSnow(t);
     if (!reduce) requestAnimationFrame(loop);
   }

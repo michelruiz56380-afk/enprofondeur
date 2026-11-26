@@ -162,11 +162,6 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
     <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path data-wave="fill-bottom 14 48 1600 0"/><path data-wave="fill-bottom 10 66 2100 1"/></svg>
   </section>
 
-  <div class="marquee" aria-hidden="true"><div class="marquee-track">
-    <span>Respirer</span><i></i><span>Plonger</span><i></i><span>Ressentir</span><i></i><span>Intensité</span><i></i><span>Connexion</span><i></i><span>Précision</span><i></i><span>Révéler son potentiel</span><i></i>
-    <span>Respirer</span><i></i><span>Plonger</span><i></i><span>Ressentir</span><i></i><span>Intensité</span><i></i><span>Connexion</span><i></i><span>Précision</span><i></i><span>Révéler son potentiel</span><i></i>
-  </div></div>
-
   <section id="teaser">
     <p class="eyebrow reveal">En 54 secondes</p>
     <h2 class="reveal">Plongez <em>avec moi</em></h2>

@@ -446,7 +446,7 @@ coaching = head('Mes différents coachings — En Profondeur',
     <div class="strip reveal">
       <figure class="photo"><img src="img/langoustes.webp" alt="Grégory en combinaison, deux langoustes à la main" loading="lazy"></figure>
       <figure class="photo"><img src="img/merou.webp" alt="Grégory sur un bateau avec un mérou rouge" loading="lazy"></figure>
-      <figure class="photo"><img src="img/poisson-falaise.webp" alt="Grégory dans l'eau avec un poisson, devant une falaise" loading="lazy"></figure>
+      <figure class="photo"><img src="img/descente-apnee.webp" alt="Grégory en descente en apnée, tête vers le fond, le long de la ligne" loading="lazy"></figure>
     </div>
     <div class="offers-sm">''' \
     + offer('coaching-sportif', 'Coaching sportif',

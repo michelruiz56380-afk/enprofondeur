@@ -5,7 +5,7 @@
   let audio = null, progress = 0;
 
   /* ---- Ambiance : l'eau fonce au fil de la page (aucun chiffre affiché) ---- */
-  const stops = [[0,[13,58,64]],[.2,[8,44,52]],[.5,[10,28,34]],[.8,[14,18,20]],[1,[15,15,15]]];
+  const stops = [[0,[4,20,50]],[.3,[3,14,38]],[.65,[2,10,28]],[1,[2,7,18]]];
   const mix = t => {
     for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) {
       const [a, ca] = stops[i-1], [b, cb] = stops[i], k = (t - a) / (b - a);
@@ -21,7 +21,7 @@
     document.body.style.background = `rgb(${r},${g},${b})`;
     hdr && hdr.classList.toggle('scrolled', scrollY > 40);
     if (!reduce){
-      if (portrait) portrait.style.transform = `translateY(${Math.min(scrollY, innerHeight) * .12}px)`;
+      if (portrait) portrait.style.transform = `translate(-50%, ${Math.min(scrollY, innerHeight) * .06}px)`;
       for (const el of parallax){
         const rc = el.parentElement.getBoundingClientRect();
         el.style.transform = `translateY(${(rc.top + rc.height/2 - innerHeight/2) * +el.dataset.speed}px)`;
@@ -32,6 +32,39 @@
   addEventListener('scroll', onScroll, {passive:true});
   addEventListener('resize', onScroll);
   onScroll();
+
+  /* ---- Story scrolling : la forme lumineuse change avec l'étape lue ---- */
+  const sv = $('#storyVisual'), sw = $('#storyWord'), steps = [...document.querySelectorAll('.ss-step')];
+  if (sv && steps.length){
+    const setStep = el => {
+      const i = el.dataset.i;
+      if (sv.dataset.step === i) return;
+      steps.forEach(s => s.classList.toggle('active', s === el));
+      sv.dataset.step = i;
+      const word = el.querySelector('h3').textContent;
+      sw.classList.add('out');
+      setTimeout(() => { sw.textContent = word; sw.classList.remove('out'); }, 260);
+    };
+    steps[0].classList.add('active');
+    const sio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && setStep(e.target)),
+      {rootMargin: '-45% 0px -45% 0px'});
+    steps.forEach(s => sio.observe(s));
+  }
+
+  /* ---- Halo lumineux qui suit la souris + bord lumineux des cartes ---- */
+  if (matchMedia('(pointer: fine)').matches && !reduce){
+    const glow = $('#glow');
+    let gx = innerWidth / 2, gy = innerHeight / 2, tx = gx, ty = gy;
+    addEventListener('pointermove', e => { tx = e.clientX; ty = e.clientY; document.body.classList.add('has-pointer'); }, {passive:true});
+    (function follow(){ gx += (tx - gx) * .12; gy += (ty - gy) * .12; glow.style.transform = `translate(${gx}px,${gy}px)`; requestAnimationFrame(follow); })();
+    document.querySelectorAll('.need,.offer,.tcard,.media-card').forEach(card => {
+      card.addEventListener('pointermove', e => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
 
   /* ---- Menu mobile ---- */
   const burger = $('#burger'), mnav = $('#mobileNav');
@@ -56,10 +89,10 @@
   /* ---- Vagues de la carte héros (accueil) ---- */
   const w1 = $('#w1'), w2 = $('#w2');
   function wave(t, amp, off, sp){
-    let d = 'M0 0 L0 ' + off;
+    let d = 'M0 ' + off;
     for (let x = 0; x <= 1440; x += 30)
       d += ` L${x} ${off + Math.sin(x/220 + t/sp)*amp + Math.sin(x/90 + t/(sp*.7))*amp*.3}`;
-    return d + ' L1440 0 Z';
+    return d + ' L1440 120 L0 120 Z';
   }
 
   /* ---- Particules en suspension ---- */
@@ -79,11 +112,11 @@
       const y = ((p.y - scrollY * dpr * p.z * .35 - t * .01 * p.z) % H + H) % H;
       const x = p.x + Math.sin(t/2000 + p.ph) * 12 * p.z;
       cx.globalAlpha = vis * p.z;
-      cx.beginPath(); cx.arc(x, y, p.r * p.z, 0, 6.28); cx.fillStyle = '#c9fbf8'; cx.fill();
+      cx.beginPath(); cx.arc(x, y, p.r * p.z, 0, 6.28); cx.fillStyle = '#bfe6ff'; cx.fill();
     }
   }
   function loop(t){
-    if (w1){ w1.setAttribute('d', wave(t, 26, 210, 1400)); w2.setAttribute('d', wave(t + 900, 18, 150, 1900)); }
+    if (w1){ w1.setAttribute('d', wave(t, 14, 48, 1600)); w2.setAttribute('d', wave(t + 900, 10, 66, 2100)); }
     drawSnow(t);
     if (!reduce) requestAnimationFrame(loop);
   }

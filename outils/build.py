@@ -32,6 +32,8 @@ def head(title, desc):
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+<div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+<div id="glow" aria-hidden="true"></div>
 <canvas id="snow" aria-hidden="true"></canvas>
 {BADGE}'''
 
@@ -115,24 +117,32 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
              'Coaching de vie et coaching respiration avec Grégory Ortiz. Clarifier, reprendre confiance, retrouver le calme. Premier appel sans engagement.') \
     + header('index.html') + f'''
 <main>
-  <section id="accueil">
-    <div class="hero reveal">
-      <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
-        <path id="w1" fill="rgba(255,255,255,.10)"/><path id="w2" fill="rgba(255,255,255,.08)"/>
-      </svg>
-      <img class="portrait" id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595">
-      <h1>En<span>Profondeur</span></h1>
-      <p class="name">GREGORY ORTIZ<small>Coach de vie · PNL · Respiration</small></p>
-    </div>
-    <div class="hero-text reveal">
-      <strong>Clarifier ce qui vous bloque. Reprendre confiance. Retrouver le calme.</strong>
-      <p>Faites le premier pas vers votre transformation. Plongez avec moi dans cette aventure où, ensemble, nous explorerons vos profondeurs pour révéler votre potentiel.</p>
-      <div class="ctas">
-        <a class="btn teal" href="#contact">Réserver un premier appel</a>
-        <a class="btn" href="#teaser"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Voir le teaser · 54 s</a>
+  <section id="accueil" class="hero2">
+    <div class="hero2-grid">
+      <div class="hero2-text">
+        <p class="eyebrow reveal">Grégory Ortiz · Coach de vie · PNL · Respiration</p>
+        <h1 class="hero2-title"><span class="ln"><span>En</span></span><span class="ln"><span>Profondeur</span></span></h1>
+        <strong class="reveal">Clarifier ce qui vous bloque. Reprendre confiance. Retrouver le calme.</strong>
+        <p class="reveal">Faites le premier pas vers votre transformation. Plongez avec moi dans cette aventure où, ensemble, nous explorerons vos profondeurs pour révéler votre potentiel.</p>
+        <div class="ctas reveal">
+          <a class="btn teal" href="#contact">Réserver un premier appel</a>
+          <a class="btn" href="#teaser"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Voir le teaser · 54 s</a>
+        </div>
+      </div>
+      <div class="hero2-visual" aria-hidden="false">
+        <div class="morph-halo"></div>
+        <div class="morph"><img id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595"></div>
+        <span class="orbit o1"></span><span class="orbit o2"></span>
       </div>
     </div>
+    <a class="scroll-cue" href="#teaser" aria-label="Faire défiler"><span></span></a>
+    <svg class="wave-sep" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path id="w1"/><path id="w2"/></svg>
   </section>
+
+  <div class="marquee" aria-hidden="true"><div class="marquee-track">
+    <span>Respirer</span><i></i><span>Plonger</span><i></i><span>Ressentir</span><i></i><span>Intensité</span><i></i><span>Connexion</span><i></i><span>Précision</span><i></i><span>Révéler son potentiel</span><i></i>
+    <span>Respirer</span><i></i><span>Plonger</span><i></i><span>Ressentir</span><i></i><span>Intensité</span><i></i><span>Connexion</span><i></i><span>Précision</span><i></i><span>Révéler son potentiel</span><i></i>
+  </div></div>
 
   <section id="teaser">
     <p class="eyebrow reveal">En 54 secondes</p>
@@ -157,13 +167,24 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
     </div>
   </section>
 
-  <section id="approche">
-    <p class="eyebrow reveal">Je vous accompagne</p>
-    <h2 class="reveal">Aller au fond des choses, <em>ne rien laisser au hasard</em></h2>
-    <div class="words">
-      <div class="word reveal"><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.</p></div>
-      <div class="word reveal"><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.</p></div>
-      <div class="word reveal"><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.</p></div>
+  <section id="approche" class="story">
+    <div class="story-head">
+      <p class="eyebrow reveal">Je vous accompagne</p>
+      <h2 class="reveal">Aller au fond des choses, <em>ne rien laisser au hasard</em></h2>
+    </div>
+    <div class="story-grid">
+      <div class="story-sticky">
+        <div class="story-visual" id="storyVisual" data-step="0">
+          <div class="sv-blob"></div><div class="sv-blob b2"></div>
+          <span class="sv-word" id="storyWord">Intensité</span>
+          <span class="sv-dots"><i></i><i></i><i></i></span>
+        </div>
+      </div>
+      <div class="story-steps">
+        <article class="ss-step" data-i="0"><span class="ss-num">01</span><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.</p></article>
+        <article class="ss-step" data-i="1"><span class="ss-num">02</span><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.</p></article>
+        <article class="ss-step" data-i="2"><span class="ss-num">03</span><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.</p></article>
+      </div>
     </div>
   </section>
 

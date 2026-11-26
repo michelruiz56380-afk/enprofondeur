@@ -222,6 +222,8 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
       </div>
     </div>
     <div class="facts">
+      <div class="fact reveal"><b>40 ans</b><span>De passion pour l’apnée et la mer</span></div>
+      <div class="fact reveal"><b>3</b><span>Championnats du monde de pêche sous-marine</span></div>
       <div class="fact reveal"><b>18 ans</b><span>Plus jeune moniteur de pêche sous-marine de France</span></div>
       <div class="fact reveal"><b>BPJEPS</b><span>Plongée sans scaphandre</span></div>
       <div class="fact reveal"><b>PNL</b><span>Coaching et programmation neuro-linguistique</span></div>
@@ -305,6 +307,11 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
         <h1 class="emerge">Grégory <em>Ortiz</em></h1>
         <p class="intro reveal">Je suis Grégory Ortiz, enfant des montagnes grenobloises, dont le cœur a été capturé par l’appel du grand large. Ma passion pour l’apnée et la pêche sous-marine a été inspirée par les exploits de Jacques Mayol et immortalisée par le cinéma. Je suis devenu compétiteur, formateur, et même pêcheur professionnel, toujours en quête d’harmonie avec la mer.</p>
         <p class="lead reveal" style="margin-top:16px">À travers l’enseignement, j’ai partagé mon savoir et ma passion pour l’apnée, en prenant soin de véhiculer les valeurs d’écologie et de respect de la nature. Mon parcours est un témoignage vivant de la manière dont une passion peut guider une vie et inspirer les autres.</p>
+        <div class="facts about-facts">
+          <div class="fact reveal"><b>40 ans</b><span>De passion pour l’apnée et la mer</span></div>
+          <div class="fact reveal"><b>3</b><span>Championnats du monde de pêche sous-marine</span></div>
+          <div class="fact reveal"><b>18 ans</b><span>Plus jeune moniteur de pêche sous-marine de France</span></div>
+        </div>
       </div>
       <div class="portrait-card reveal"><img src="img/sourire.webp" alt="Grégory Ortiz, souriant" width="370" height="370"></div>
     </div>
@@ -593,13 +600,13 @@ evenements = head('Événements — Tahiti Freediving Experience · En Profondeu
         <div class="event-coach reveal">
           <img src="img/sourire.webp" alt="" width="370" height="370">
           <div><b>Encadré par Grégory Ortiz</b>
-            <ul><li>40 ans de passion</li><li>3 championnats du monde</li><li>Coaching mental et respiratoire</li></ul></div>
+            <ul><li>40 ans de passion</li><li>3 championnats du monde de pêche sous-marine</li><li>Coaching mental et respiratoire</li></ul></div>
         </div>
 
         <div class="event-info">
           <div class="info reveal"><span class="ico">{ICON['prog']}</span><div><b>Au programme</b><p>Respiration · technique · mental.<br>2 séances d’apnée sur câble en mer, à bord du navire <i>Discovery</i>.</p></div></div>
           <div class="info reveal"><span class="ico">{ICON['date']}</span><div><b>Dates</b><p>Une journée au choix :</p>
-            <div class="dates"><span><em>Décembre</em>5 · 6 · 19 · 20</span><span><em>Janvier</em>9 · 10 · 23 · 24</span><span><em>Février</em>6 · 7 · 20 · 21</span></div></div></div>
+            <div class="dates"><span><em>Décembre 2026</em>5 · 6 · 19 · 20</span><span><em>Janvier 2027</em>9 · 10 · 23 · 24</span><span><em>Février 2027</em>6 · 7 · 20 · 21</span></div></div></div>
           <div class="info reveal"><span class="ico">{ICON['boat']}</span><div><b>Tout compris</b><p>Repas, boissons, matériel complet (PMT, lestage, combinaison).</p></div></div>
           <div class="info reveal"><span class="ico">{ICON['gift']}</span><div><b>Bonus offert</b><p>1 h de coaching privé en visio avec Grégory Ortiz (valeur 21 500 F CFP).</p></div></div>
         </div>

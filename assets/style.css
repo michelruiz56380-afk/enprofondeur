@@ -476,3 +476,5 @@ h1.emerge em .ch{background-image:linear-gradient(100deg,var(--teal),#9ad8ff 45%
 }
 @media (prefers-reduced-motion:reduce){ .flyer{transform:none} }
 .event-org a{white-space:nowrap}
+.about-facts{margin-top:30px;grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:520px){.about-facts{grid-template-columns:1fr}}

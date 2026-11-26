@@ -146,6 +146,8 @@ h2 em,h1 em{font-style:normal;color:var(--teal)}
 .offer .price{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;margin-top:8px;gap:12px;flex-wrap:wrap}
 .offer .price b{font-size:1.7rem;font-weight:800}
 .offer .price span{color:var(--muted);font-size:.85rem}
+.offer .price .cfp{display:block;font-size:.78rem;letter-spacing:.02em;margin-top:2px}
+.row em small{display:block;font-size:.72rem;font-weight:500;color:var(--muted);text-align:right}
 .offers-sm{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin-top:26px}
 .offers-sm .offer{padding:26px}
 .offers-sm .offer h3{font-size:1.25rem}

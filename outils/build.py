@@ -203,7 +203,7 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
           <li>Prendre conscience de vos ressources</li>
           <li>Renforcer votre confiance et votre efficacité</li>
         </ul>
-        <div class="price"><div><b>150 €</b> <span>/ séance d’1 h</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
+        <div class="price"><div><b>150 €</b> <span>/ séance d’1 h</span><span class="cfp">18 000 CFP</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
       </article>
       <article class="offer reveal">
         <h3>Respiration &amp; relaxation</h3>
@@ -212,18 +212,18 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
           <li>Reprendre le contrôle émotionnel</li>
           <li>Idéal pour les personnes stressées</li>
         </ul>
-        <div class="price"><div><b>200 €</b> <span>/ séance d’1 h</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
+        <div class="price"><div><b>200 €</b> <span>/ séance d’1 h</span><span class="cfp">24 000 CFP</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
       </article>
     </div>
     <div class="other reveal">
       <h3>Sport &amp; mer</h3>
       <p>Pour les sportifs, apnéistes et chasseurs sous-marins.</p>
       <div class="rows">
-        <a class="row" href="coaching.html#coaching-sportif"><b>Coaching sportif</b><span>Boxe, Ironman et autres disciplines</span><em>120 €</em></a>
-        <a class="row" href="coaching.html#coaching-apnee"><b>Apnée</b><span>Capacité pulmonaire, endurance, sécurité</span><em>120 €</em></a>
-        <a class="row" href="coaching.html#coaching-peche"><b>Pêche sous-marine</b><span>Tous niveaux, technique et sécurité</span><em>150 €</em></a>
-        <a class="row" href="coaching.html#coaching-profondeur"><b>Gagner en profondeur</b><span>Séance d’1 h 30</span><em>200 €</em></a>
-        <a class="row" href="coaching.html#coaching-securite"><b>Sécurité</b><span>Bonnes pratiques sous l’eau · 1 h 30</span><em>200 €</em></a>
+        <a class="row" href="coaching.html#coaching-sportif"><b>Coaching sportif</b><span>Boxe, Ironman et autres disciplines</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-peche"><b>Pêche sous-marine</b><span>Tous niveaux, technique et sécurité</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-apnee"><b>Apnée</b><span>Capacité pulmonaire, endurance, sécurité</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-profondeur"><b>Gagner en profondeur</b><span>Séance d’1 h 30</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-securite"><b>Sécurité</b><span>Bonnes pratiques sous l’eau · 1 h 30</span><em>150 €<small>18 000 CFP</small></em></a>
       </div>
     </div>
     <a class="more reveal" href="coaching.html">Voir le détail des coachings →</a>
@@ -315,12 +315,15 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
 write('about.html', about)
 
 # ------------------------------------------------------------------ COACHINGS
+CFP = {'150 €': '18 000 CFP', '200 €': '24 000 CFP'}
+
+
 def offer(id_, title, body, price, dur, cls='offer reveal'):
     return f'''
       <article class="{cls}" id="{id_}">
         <h3>{title}</h3>
         <div class="grow">{body}</div>
-        <div class="price"><div><b>{price}</b> <span>/ {dur}</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
+        <div class="price"><div><b>{price}</b> <span>/ {dur}</span><span class="cfp">{CFP[price]}</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
       </article>'''
 
 coaching = head('Mes différents coachings — En Profondeur',
@@ -356,19 +359,19 @@ coaching = head('Mes différents coachings — En Profondeur',
     <div class="offers-sm">''' \
     + offer('coaching-sportif', 'Coaching sportif',
             '<p>Je propose un accompagnement personnalisé pour divers sports, y compris la boxe et les Ironman. En plus de l’apnée et de la pêche sous-marine, j’accompagne d’autres sportifs dans l’atteinte de leurs objectifs.</p>',
-            '120 €', 'séance') \
-    + offer('coaching-apnee', 'Coaching apnée',
-            '<p>Mon coaching apnée est conçu pour vous aider à améliorer votre capacité pulmonaire, votre endurance et votre sécurité lors de la plongée en apnée.</p>',
-            '120 €', 'séance') \
+            '150 €', 'séance') \
     + offer('coaching-peche', 'Coaching pêche sous-marine',
             '<p>J’offre un coaching spécialisé pour la pêche sous-marine, adapté à tous les niveaux, pour améliorer vos compétences et votre sécurité en mer.</p>',
             '150 €', 'séance') \
+    + offer('coaching-apnee', 'Coaching apnée',
+            '<p>Mon coaching apnée est conçu pour vous aider à améliorer votre capacité pulmonaire, votre endurance et votre sécurité lors de la plongée en apnée.</p>',
+            '150 €', 'séance') \
     + offer('coaching-profondeur', 'Coaching gagner en profondeur',
             '<p>Coaching spécialisé pour améliorer votre capacité à plonger plus en profondeur en toute sécurité.</p>',
-            '200 €', 'séance d’1 h 30') \
+            '150 €', 'séance d’1 h 30') \
     + offer('coaching-securite', 'Coaching sécurité',
             '<p>Je propose un coaching crucial pour vous apprendre les meilleures pratiques de sécurité sous l’eau et éviter les risques potentiels de la plongée.</p>',
-            '200 €', 'séance d’1 h 30') + '''
+            '150 €', 'séance d’1 h 30') + '''
     </div>
     <p class="lead reveal" style="margin-top:60px">Pour toute information supplémentaire ou pour réserver une séance, contactez-moi. Je suis impatient de vous accompagner dans vos projets et de vous aider à atteindre vos objectifs !</p>
   </section>

@@ -52,6 +52,7 @@ Les deux vidéos de témoignages sont lues directement depuis `enprofondeur.fr`.
 
 ## Reste à faire avant la mise en ligne
 
+- [ ] Tarifs alignés sur le site en ligne au 26/11/2026 (€ et CFP) : à revérifier juste avant la mise en ligne.
 - [ ] Brancher le bouton « Réserver un premier appel » sur un outil de réservation (Cal.com ou Calendly). Il pointe aujourd'hui vers `#`.
 - [ ] Créer la page **Mentions légales**, obligatoire pour un site professionnel en France.
 - [ ] Faire valider par Grégory les textes marqués `[ texte à valider ]` (Intensité / Précision / Connexion).

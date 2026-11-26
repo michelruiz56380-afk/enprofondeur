@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>En Profondeur — Coaching avec Grégory Ortiz</title>
+<meta name="description" content="Coaching de vie et coaching respiration avec Grégory Ortiz. Clarifier, reprendre confiance, retrouver le calme. Premier appel sans engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f0f0f; --ink:#f4f7f7; --muted:rgba(244,247,247,.68); --line:rgba(244,247,247,.18);
+  --teal:#19d3cf; --card:rgba(10,14,16,.55);
+  --gutter:clamp(16px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:Manrope,system-ui,sans-serif;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:800;line-height:1.04;letter-spacing:-.03em}
+a{color:inherit}
+img{display:block;max-width:100%}
+
+#snow{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.side-title{position:fixed;right:calc(var(--gutter) - 6px);top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:22px;pointer-events:none}
+.side-title span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--muted)}
+.side-title i{width:1px;height:22vh;background:var(--line)}
+
+/* --- En-tête --------------------------------------------------------- */
+header{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px var(--gutter);transition:background .4s,backdrop-filter .4s}
+header.scrolled{background:rgba(12,14,15,.72);backdrop-filter:blur(10px)}
+.logo{font-weight:800;font-size:clamp(1.05rem,2vw,1.4rem);text-decoration:none;letter-spacing:-.01em}
+nav.menu{display:flex;gap:28px;font-size:.88rem;font-weight:500}
+nav.menu a{text-decoration:none;color:var(--muted);transition:color .2s}
+nav.menu a:hover{color:var(--ink)}
+.hdr-actions{display:flex;gap:10px;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--ink);border-radius:999px;padding:12px 22px;font:600 .92rem Manrope,sans-serif;text-decoration:none;color:var(--ink);background:transparent;cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:hover{background:var(--ink);color:#0f0f0f}
+.btn.teal{background:var(--teal);border-color:var(--teal);color:#05201f}
+.btn.teal:hover{background:var(--ink);border-color:var(--ink)}
+.icon-btn{width:44px;height:44px;padding:0;justify-content:center;border-color:var(--line)}
+.icon-btn[aria-pressed="true"]{border-color:var(--teal);color:var(--teal)}
+
+/* --- Sections -------------------------------------------------------- */
+main{position:relative;z-index:1}
+section{padding:14vh calc(var(--gutter) + 60px) 10vh;max-width:1360px;margin:0 auto}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:flex;align-items:center;gap:14px}
+.eyebrow::before{content:"";width:36px;height:1px;background:currentColor}
+h2{font-size:clamp(2.2rem,5.2vw,4.2rem);margin-bottom:24px;max-width:16ch}
+h2 em{font-style:normal;color:var(--teal)}
+.lead{font-size:clamp(1rem,1.5vw,1.18rem);color:var(--muted);max-width:60ch}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.todo{display:inline-block;margin-top:8px;color:var(--teal);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase}
+
+/* Héros (carte de l'original) */
+#accueil{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:13vh}
+.hero{position:relative;width:100%;aspect-ratio:16/9;max-height:70vh;border-radius:4px;overflow:hidden;
+  background:linear-gradient(160deg,#1aa3a3 0%,#2bb3b0 25%,#6fb0cf 55%,#86acd8 70%,#5aa6c4 100%)}
+.hero .waves{position:absolute;inset:0 0 auto;height:45%;width:100%}
+.hero .portrait{position:absolute;right:5%;bottom:0;height:96%;width:auto;filter:grayscale(1) contrast(1.08);will-change:transform}
+.hero h1{position:absolute;left:0;bottom:24%;font-size:clamp(3.2rem,10.5vw,9.5rem);line-height:.86;color:#fff;letter-spacing:-.045em}
+.hero h1 span{display:block;padding-left:16%}
+.hero .name{position:absolute;left:12%;bottom:8%;font-size:.85rem;font-weight:700;letter-spacing:.2em;color:#0d2b33}
+.hero .name small{display:block;font-weight:500;letter-spacing:.08em;margin-top:4px}
+.hero-text{position:relative;margin:-12% 0 0 auto;width:min(580px,100%);background:#0f0f0f;padding:34px 40px;z-index:2}
+.hero-text strong{display:block;font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.25;letter-spacing:-.01em;margin-bottom:12px}
+.hero-text p{color:var(--muted)}
+.hero-text .ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+
+/* Pour qui */
+.needs{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:44px}
+.need{border:1px solid var(--line);border-radius:6px;padding:28px;background:var(--card);backdrop-filter:blur(6px)}
+.need .n{font-size:.78rem;font-weight:700;color:var(--teal);letter-spacing:.1em}
+.need h3{font-size:1.3rem;font-weight:700;letter-spacing:-.01em;margin:10px 0 8px}
+.need p{color:var(--muted);font-size:.93rem}
+
+/* Approche : les trois mots */
+.words{margin-top:28px;display:flex;flex-direction:column;gap:clamp(16px,3vw,30px)}
+.word{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,56px);align-items:center}
+.word:nth-child(2){grid-template-columns:1fr auto}
+.word:nth-child(2) h3{order:2}
+.word h3{font-size:clamp(2.6rem,7.5vw,6rem);font-weight:500;letter-spacing:-.04em}
+.word p{color:var(--muted);max-width:42ch;border-left:1px solid var(--teal);padding-left:20px;font-size:.98rem}
+.word:nth-child(2) p{justify-self:end}
+
+/* Qui suis-je */
+.recit{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,5vw,80px);align-items:center}
+.collage{position:relative;height:min(540px,68vh)}
+.collage figure{position:absolute;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.collage img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .8s ease,transform .8s ease}
+.collage figure:hover img{filter:none;transform:scale(1.03)}
+.collage .c1{left:0;top:6%;width:56%;height:52%}
+.collage .c2{right:0;top:0;width:42%;height:62%}
+.collage .c3{left:22%;bottom:0;width:46%;height:40%}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;margin-top:56px}
+.fact{border-top:1px solid var(--line);padding-top:16px}
+.fact b{font-size:1.5rem;font-weight:800;color:var(--teal);letter-spacing:-.02em;display:block}
+.fact span{color:var(--muted);font-size:.9rem}
+
+/* Respiration */
+#essayer{text-align:center}
+#essayer h2,#essayer .lead{margin-left:auto;margin-right:auto}
+.breath{position:relative;width:min(300px,70vw);aspect-ratio:1;margin:48px auto 32px;display:grid;place-items:center}
+.breath .ring{position:absolute;inset:0;border-radius:50%;border:1px solid var(--line)}
+.breath .orb{position:absolute;inset:18%;border-radius:50%;background:radial-gradient(circle at 35% 30%,rgba(25,211,207,.6),rgba(25,211,207,.06) 70%);box-shadow:0 0 90px rgba(25,211,207,.25);transform:scale(.55);transition:transform 4s cubic-bezier(.45,0,.55,1)}
+.breath .label{position:relative;font-size:1.6rem;font-weight:700}
+.breath .count{position:relative;display:block;font-size:.78rem;color:var(--muted);letter-spacing:.2em;margin-top:6px}
+.breath-after{margin:22px auto 0;color:var(--muted);min-height:3em;max-width:46ch}
+.breath-after a{color:var(--teal)}
+
+/* Offres */
+.main-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:40px}
+.offer{border:1px solid var(--line);border-radius:6px;padding:34px;background:var(--card);backdrop-filter:blur(6px);display:flex;flex-direction:column;gap:12px;transition:border-color .3s,transform .3s}
+.offer:hover{border-color:var(--teal);transform:translateY(-4px)}
+.offer h3{font-size:1.65rem;font-weight:800}
+.offer p{color:var(--muted);font-size:.95rem}
+.offer ul{list-style:none;display:grid;gap:6px;font-size:.93rem;flex:1}
+.offer li::before{content:"— ";color:var(--teal)}
+.offer .price{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:16px;margin-top:8px;gap:12px;flex-wrap:wrap}
+.offer .price b{font-size:1.7rem;font-weight:800}
+.offer .price span{color:var(--muted);font-size:.85rem}
+.other{margin-top:56px}
+.other h3{font-size:1.15rem;font-weight:700;margin-bottom:6px;letter-spacing:-.01em}
+.other > p{color:var(--muted);font-size:.93rem;margin-bottom:18px}
+.rows{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1fr auto auto;gap:20px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line)}
+.row b{font-weight:600}
+.row span{color:var(--muted);font-size:.88rem}
+.row em{font-style:normal;font-weight:700}
+
+/* Témoignages */
+.voices{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px;margin-top:40px}
+blockquote p{font-size:1.08rem;line-height:1.55}
+blockquote cite{display:block;margin-top:16px;font-style:normal;font-weight:700;color:var(--teal)}
+
+/* Contact */
+.fond{display:grid;grid-template-columns:1.2fr 1fr;gap:clamp(28px,5vw,80px);align-items:center;min-height:80vh}
+.fond h2{max-width:12ch}
+.fond .lead{margin-bottom:30px}
+.steps{list-style:none;display:grid;gap:10px;margin-bottom:32px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;gap:14px;color:var(--muted)}
+.steps li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;border:1px solid var(--teal);color:var(--teal);font-size:.78rem;font-weight:700;display:grid;place-items:center}
+.contact-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.round{width:min(400px,80vw);aspect-ratio:1;border-radius:50%;overflow:hidden;justify-self:center;box-shadow:0 0 0 1px var(--line),0 0 120px rgba(25,211,207,.12)}
+.round img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+footer{position:relative;z-index:1;display:flex;justify-content:space-between;padding:26px calc(var(--gutter) + 60px) 34px;font-size:.8rem;color:var(--muted);max-width:1360px;margin:0 auto}
+
+@media (max-width:980px){ nav.menu{display:none} }
+@media (max-width:900px){
+  .recit,.fond{grid-template-columns:1fr}
+  .collage{height:min(440px,95vw)}
+  .word,.word:nth-child(2){grid-template-columns:1fr}
+  .word:nth-child(2) h3{order:0}
+  .word:nth-child(2) p{justify-self:start}
+}
+@media (max-width:760px){
+  section{padding:11vh var(--gutter) 8vh}
+  footer{padding:24px var(--gutter) 40px;flex-direction:column;gap:6px}
+  .side-title{display:none}
+  .hero{aspect-ratio:3/4;max-height:none}
+  .hero h1{bottom:30%;font-size:clamp(2.5rem,14vw,4.2rem)}
+  .hero h1 span{padding-left:7%}
+  .hero .name{top:20px;bottom:auto;left:7%}
+  .hero .portrait{right:-10%;height:80%}
+  .hero-text{margin:-12% 0 0 5%;padding:26px 22px}
+  .row{grid-template-columns:1fr auto;gap:4px 16px}
+  .row span{grid-column:1}
+  .row em{grid-row:1;grid-column:2}
+  .hdr-actions .btn:not(.icon-btn){padding:9px 14px;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .breath .orb{transition-duration:.01s}
+}
+</style>
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<header id="hdr">
+  <a class="logo" href="#accueil">EN PROFONDEUR…</a>
+  <nav class="menu" aria-label="Navigation principale">
+    <a href="#pour-qui">Pour qui</a>
+    <a href="#approche">L’approche</a>
+    <a href="#qui-suis-je">Qui suis-je</a>
+    <a href="#accompagnements">Accompagnements</a>
+    <a href="#temoignages">Témoignages</a>
+  </nav>
+  <div class="hdr-actions">
+    <button class="btn icon-btn" id="soundBtn" aria-pressed="false" aria-label="Activer l'ambiance sonore" title="Ambiance sonore">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+    </button>
+    <a class="btn teal" href="#contact">Réserver un appel</a>
+  </div>
+</header>
+<div class="side-title" aria-hidden="true"><span>Gregory Ortiz en profondeur</span><i></i></div>
+
+<main>
+  <!-- 1. Accueil -->
+  <section id="accueil">
+    <div class="hero reveal">
+      <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path id="w1" fill="rgba(255,255,255,.10)"/><path id="w2" fill="rgba(255,255,255,.08)"/>
+      </svg>
+      <img class="portrait" id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595">
+      <h1>En<span>Profondeur</span></h1>
+      <p class="name">GREGORY ORTIZ<small>Coach de vie · PNL · Respiration</small></p>
+    </div>
+    <div class="hero-text reveal">
+      <strong>Clarifier ce qui vous bloque. Reprendre confiance. Retrouver le calme.</strong>
+      <p>Faites le premier pas vers votre transformation. Ensemble, nous explorerons vos profondeurs pour révéler votre potentiel.</p>
+      <div class="ctas">
+        <a class="btn teal" href="#contact">Réserver un premier appel</a>
+        <a class="btn" href="#approche">Découvrir l’approche</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Pour qui -->
+  <section id="pour-qui">
+    <p class="eyebrow reveal">Pour qui</p>
+    <h2 class="reveal">Vous êtes au bon endroit <em>si…</em></h2>
+    <div class="needs">
+      <article class="need reveal"><span class="n">01</span><h3>Vous traversez une mauvaise passe</h3><p>Le professionnel, le personnel et le relationnel s’emmêlent, et vous ne savez plus par où commencer.</p></article>
+      <article class="need reveal"><span class="n">02</span><h3>Le stress s’est installé dans votre corps</h3><p>Tensions, souffle court, nuits agitées : vous voulez reprendre le contrôle de vos émotions.</p></article>
+      <article class="need reveal"><span class="n">03</span><h3>Vous voulez changer de cap</h3><p>Reconversion, nouveau projet, décision importante : vous avez besoin d’y voir clair et d’oser.</p></article>
+      <article class="need reveal"><span class="n">04</span><h3>Vous visez une performance</h3><p>Sport, compétition, mer : vous voulez progresser en gardant la tête froide.</p></article>
+    </div>
+  </section>
+
+  <!-- 3. Approche -->
+  <section id="approche">
+    <p class="eyebrow reveal">L’approche</p>
+    <h2 class="reveal">Aller au fond des choses, <em>ne rien laisser au hasard</em></h2>
+    <div class="words">
+      <div class="word reveal"><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.<br><span class="todo">[ texte à valider ]</span></p></div>
+      <div class="word reveal"><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.<br><span class="todo">[ texte à valider ]</span></p></div>
+      <div class="word reveal"><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.<br><span class="todo">[ texte à valider ]</span></p></div>
+    </div>
+  </section>
+
+  <!-- 4. Qui suis-je -->
+  <section id="qui-suis-je">
+    <div class="recit">
+      <div>
+        <p class="eyebrow reveal">Qui suis-je</p>
+        <h2 class="reveal">Ce que la mer <em>m’a appris sur l’humain</em></h2>
+        <p class="lead reveal">Ancien champion de pêche sous-marine et apnéiste, j’ai appris sous l’eau que chaque respiration compte et que le calme se travaille. Aujourd’hui, j’accompagne des personnes à travers le coaching et la PNL, avec la même exigence : en séance, chaque mot a son importance.</p>
+        <p class="todo reveal">[ texte à valider ]</p>
+      </div>
+      <div class="collage reveal">
+        <figure class="c1" data-speed=".06"><img src="img/mer.webp" alt="Grégory en mer, en combinaison" loading="lazy"></figure>
+        <figure class="c2" data-speed="-.05"><img src="img/noir-blanc.webp" alt="Portrait noir et blanc de Grégory" loading="lazy"></figure>
+        <figure class="c3" data-speed=".12"><img src="img/bienvenue.webp" alt="Panneau Bienvenue en forme de poisson" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact reveal"><b>18 ans</b><span>Plus jeune moniteur de pêche sous-marine de France</span></div>
+      <div class="fact reveal"><b>Formateur</b><span>Enseignant d’apnée au sein de sa fédération</span></div>
+      <div class="fact reveal"><b>PNL</b><span>Coaching et programmation neuro-linguistique</span></div>
+      <div class="fact reveal"><b>Engagé</b><span>Initiation d’enfants malades à l’apnée, sensibilisation à l’écologie marine</span></div>
+    </div>
+  </section>
+
+  <!-- 5. Essayer -->
+  <section id="essayer">
+    <p class="eyebrow reveal" style="justify-content:center">Essayez maintenant</p>
+    <h2 class="reveal">Une minute pour <em>relâcher la pression</em></h2>
+    <p class="lead reveal">Trois cycles de respiration guidée. C’est un aperçu de ce que l’on travaille en coaching respiration.</p>
+    <div class="breath reveal" aria-live="polite">
+      <div class="ring"></div>
+      <div class="orb" id="orb"></div>
+      <div><span class="label" id="bLabel">Prêt ?</span><span class="count" id="bCount">3 cycles · 42 s</span></div>
+    </div>
+    <button class="btn teal" id="bStart">Commencer</button>
+    <p class="breath-after" id="bAfter"></p>
+  </section>
+
+  <!-- 6. Accompagnements -->
+  <section id="accompagnements">
+    <p class="eyebrow reveal">Accompagnements</p>
+    <h2 class="reveal">Un accompagnement <em>sur mesure</em></h2>
+    <div class="main-offers">
+      <article class="offer reveal" id="coaching-vie">
+        <h3>Coaching de vie</h3>
+        <p>Pour avancer sur un projet, une décision ou une période difficile.</p>
+        <ul>
+          <li>Clarifier vos objectifs</li>
+          <li>Prendre conscience de vos ressources</li>
+          <li>Trouver des solutions bénéfiques pour vous et votre entourage</li>
+          <li>Renforcer votre confiance et votre efficacité</li>
+        </ul>
+        <div class="price"><div><b>150 €</b> <span>/ séance d’1 h</span></div><a class="btn teal" href="#contact">Réserver</a></div>
+      </article>
+      <article class="offer reveal" id="coaching-respiration">
+        <h3>Respiration &amp; relaxation</h3>
+        <p>Un coaching ancré dans le réel, issu de l’expérience de l’apnée, pas d’une théorie abstraite.</p>
+        <ul>
+          <li>Reprendre le contrôle émotionnel</li>
+          <li>Réduire le stress et les tensions</li>
+          <li>Des exercices simples à intégrer au quotidien</li>
+        </ul>
+        <div class="price"><div><b>200 €</b> <span>/ séance d’1 h</span></div><a class="btn teal" href="#contact">Réserver</a></div>
+      </article>
+    </div>
+    <div class="other reveal">
+      <h3>Sport &amp; mer</h3>
+      <p>Pour les sportifs, apnéistes et chasseurs sous-marins.</p>
+      <div class="rows">
+        <div class="row"><b>Coaching sportif</b><span>Boxe, Ironman et autres disciplines</span><em>120 €</em></div>
+        <div class="row"><b>Apnée</b><span>Capacité pulmonaire, endurance, sécurité</span><em>120 €</em></div>
+        <div class="row"><b>Pêche sous-marine</b><span>Tous niveaux, technique et sécurité</span><em>150 €</em></div>
+        <div class="row"><b>Gagner en profondeur</b><span>Séance d’1 h 30</span><em>200 €</em></div>
+        <div class="row"><b>Sécurité</b><span>Bonnes pratiques sous l’eau · 1 h 30</span><em>200 €</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Témoignages -->
+  <section id="temoignages">
+    <p class="eyebrow reveal">Témoignages</p>
+    <h2 class="reveal">Ils en parlent</h2>
+    <div class="voices">
+      <blockquote class="reveal"><p>« Greg m’a d’abord aidé à démêler le nœud de difficultés qui me paralysait. Après chaque échange, je me sentais soulagé et en confiance. »</p><cite>Léo P.</cite></blockquote>
+      <blockquote class="reveal"><p>« J’ai pris conscience que je ne respirais pas. Par les exercices qu’il m’a conseillés, j’ai repris vie. Ces 3 mois ont changé ma façon de vivre. »</p><cite>Laure</cite></blockquote>
+      <blockquote class="reveal"><p>« Une écoute exceptionnellement attentive, sans jugement. Je me suis sentie comprise comme jamais auparavant. »</p><cite>Stéphanie</cite></blockquote>
+    </div>
+  </section>
+
+  <!-- 8. Contact -->
+  <section id="contact">
+    <div class="fond">
+      <div>
+        <p class="eyebrow reveal">Premier pas</p>
+        <h2 class="reveal">Explorez vos <em>profondeurs..</em></h2>
+        <p class="lead reveal">Un premier appel, sans engagement, pour faire connaissance et voir si l’accompagnement vous correspond.</p>
+        <ol class="steps reveal">
+          <li>Vous choisissez un créneau</li>
+          <li>On échange sur votre situation et vos objectifs</li>
+          <li>Je vous propose l’accompagnement adapté</li>
+        </ol>
+        <div class="contact-row reveal">
+          <a class="btn teal" href="#" title="À brancher sur Calendly / Cal.com">Réserver un premier appel</a>
+          <a class="btn" href="tel:+33763734512">+33 7 63 73 45 12</a>
+          <a class="btn" href="mailto:info@enprofondeur.fr">info@enprofondeur.fr</a>
+        </div>
+      </div>
+      <div class="round reveal"><img src="img/appel.webp" alt="Grégory Ortiz au téléphone" loading="lazy"></div>
+    </div>
+  </section>
+</main>
+<footer><span>© Gregory Ortiz</span><span>Made by mimi</span></footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = s => document.querySelector(s);
+  let audio = null, progress = 0;
+
+  /* ---- Ambiance : l'eau fonce au fil de la page (sans chiffre affiché) ---- */
+  const stops = [[0,[13,58,64]],[.2,[8,44,52]],[.5,[10,28,34]],[.8,[14,18,20]],[1,[15,15,15]]];
+  const mix = t => {
+    for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) {
+      const [a, ca] = stops[i-1], [b, cb] = stops[i], k = (t - a) / (b - a);
+      return ca.map((v, j) => Math.round(v + (cb[j] - v) * k));
+    }
+    return stops.at(-1)[1];
+  };
+  const hdr = $('#hdr'), portrait = $('#portrait'), parallax = [...document.querySelectorAll('[data-speed]')];
+  function onScroll(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress = Math.min(1, Math.max(0, scrollY / max));
+    const [r,g,b] = mix(progress);
+    document.body.style.background = `rgb(${r},${g},${b})`;
+    hdr.classList.toggle('scrolled', scrollY > 40);
+    if (!reduce){
+      portrait.style.transform = `translateY(${Math.min(scrollY, innerHeight) * .12}px)`;
+      for (const el of parallax){
+        const rc = el.parentElement.getBoundingClientRect();
+        el.style.transform = `translateY(${(rc.top + rc.height/2 - innerHeight/2) * +el.dataset.speed}px)`;
+      }
+    }
+    if (audio) audio.setDepth(progress);
+  }
+  addEventListener('scroll', onScroll, {passive:true});
+  addEventListener('resize', onScroll);
+  onScroll();
+
+  /* ---- Apparitions ---- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+  }), {threshold:.12});
+  document.querySelectorAll('.reveal').forEach((el, i) => {
+    el.style.transitionDelay = (i % 4) * 90 + 'ms'; io.observe(el);
+  });
+
+  /* ---- Vagues de la carte héros ---- */
+  const w1 = $('#w1'), w2 = $('#w2');
+  function wave(t, amp, off, sp){
+    let d = 'M0 0 L0 ' + off;
+    for (let x = 0; x <= 1440; x += 30)
+      d += ` L${x} ${off + Math.sin(x/220 + t/sp)*amp + Math.sin(x/90 + t/(sp*.7))*amp*.3}`;
+    return d + ' L1440 0 Z';
+  }
+
+  /* ---- Particules en suspension ---- */
+  const cv = $('#snow'), cx = cv.getContext('2d');
+  let W, H, P = [];
+  function resize(){
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.width = innerWidth * dpr; H = cv.height = innerHeight * dpr;
+    const n = innerWidth < 760 ? 45 : 110;
+    P = Array.from({length:n}, () => ({x:Math.random()*W, y:Math.random()*H, z:.2+Math.random()*.8, r:(.5+Math.random()*1.5)*dpr, ph:Math.random()*6.28}));
+  }
+  resize(); addEventListener('resize', resize);
+  function drawSnow(t){
+    cx.clearRect(0,0,W,H);
+    const vis = .12 + progress * .55, dpr = W / innerWidth;
+    for (const p of P){
+      const y = ((p.y - scrollY * dpr * p.z * .35 - t * .01 * p.z) % H + H) % H;
+      const x = p.x + Math.sin(t/2000 + p.ph) * 12 * p.z;
+      cx.globalAlpha = vis * p.z;
+      cx.beginPath(); cx.arc(x, y, p.r * p.z, 0, 6.28); cx.fillStyle = '#c9fbf8'; cx.fill();
+    }
+  }
+  function loop(t){
+    w1.setAttribute('d', wave(t, 26, 210, 1400));
+    w2.setAttribute('d', wave(t + 900, 18, 150, 1900));
+    drawSnow(t);
+    if (!reduce) requestAnimationFrame(loop);
+  }
+  reduce ? loop(0) : requestAnimationFrame(loop);
+  if (reduce) addEventListener('scroll', () => drawSnow(0), {passive:true});
+
+  /* ---- Respiration guidée : 4 s inspire · 4 s retiens · 6 s expire ---- */
+  const orb = $('#orb'), bLabel = $('#bLabel'), bCount = $('#bCount'), bStart = $('#bStart'), bAfter = $('#bAfter');
+  const phases = [['Inspirez',4,1],['Retenez',4,1],['Expirez',6,.55]];
+  let running = false;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  bStart.addEventListener('click', async () => {
+    if (running) return; running = true; bStart.disabled = true; bAfter.textContent = '';
+    for (let c = 1; c <= 3; c++){
+      for (const [name, sec, scale] of phases){
+        bLabel.textContent = name;
+        orb.style.transitionDuration = reduce ? '.01s' : sec + 's';
+        orb.style.transform = `scale(${scale})`;
+        for (let s = sec; s > 0; s--){ bCount.textContent = `cycle ${c}/3 · ${s}`; await wait(1000); }
+      }
+    }
+    bLabel.textContent = 'Revenez'; bCount.textContent = 'à votre rythme';
+    bAfter.innerHTML = 'Ce que vous venez de ressentir, on peut le travailler en profondeur. <a href="#coaching-respiration">Découvrir le coaching respiration</a>.';
+    bStart.textContent = 'Recommencer'; bStart.disabled = false; running = false;
+  });
+
+  /* ---- Ambiance sonore (opt-in, générée, aucun fichier) ---- */
+  $('#soundBtn').addEventListener('click', e => {
+    const btn = e.currentTarget;
+    if (!audio){
+      const ac = new (window.AudioContext || window.webkitAudioContext)();
+      const len = ac.sampleRate * 4, buf = ac.createBuffer(1, len, ac.sampleRate), d = buf.getChannelData(0);
+      let last = 0; for (let i = 0; i < len; i++){ const w = Math.random()*2-1; last = (last + .02*w)/1.02; d[i] = last*3.5; }
+      const src = ac.createBufferSource(); src.buffer = buf; src.loop = true;
+      const lp = ac.createBiquadFilter(); lp.type = 'lowpass';
+      const gain = ac.createGain(); gain.gain.value = 0;
+      src.connect(lp).connect(gain).connect(ac.destination); src.start();
+      audio = { ac, gain, on:false, setDepth(p){ lp.frequency.setTargetAtTime(900 - p*780, ac.currentTime, .3); } };
+      audio.setDepth(progress);
+    }
+    audio.on = !audio.on; audio.ac.resume();
+    audio.gain.gain.setTargetAtTime(audio.on ? .35 : 0, audio.ac.currentTime, .4);
+    btn.setAttribute('aria-pressed', audio.on);
+    btn.setAttribute('aria-label', audio.on ? "Couper l'ambiance sonore" : "Activer l'ambiance sonore");
+  });
+})();
+</script>
+</body>
+</html>

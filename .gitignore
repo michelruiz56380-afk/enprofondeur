@@ -1,0 +1,10 @@
+# Fichiers exclus volontairement (droits ou vie privée) : voir README
+medias/banque-images/
+medias/modele-slider/
+medias/prive/
+*.zip
+
+# Système
+.DS_Store
+Thumbs.db
+__pycache__/

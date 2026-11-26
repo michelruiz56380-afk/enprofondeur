@@ -15,7 +15,8 @@ BADGE = ('<div style="position:fixed;bottom:16px;right:16px;z-index:20;backgroun
          'MAQUETTE DE TRAVAIL · non officielle</div>') if MAQUETTE else ''
 
 PAGES = [('index.html', 'Accueil'), ('about.html', 'Qui suis-je'),
-         ('coaching.html', 'Coachings'), ('temoignages.html', 'Témoignages')]
+         ('coaching.html', 'Coachings'), ('temoignages.html', 'Témoignages'),
+         ('evenements.html', 'Événements')]
 
 
 def head(title, desc):
@@ -446,7 +447,7 @@ coaching = head('Mes différents coachings — En Profondeur',
     <div class="strip reveal">
       <figure class="photo"><img src="img/langoustes.webp" alt="Grégory en combinaison, deux langoustes à la main" loading="lazy"></figure>
       <figure class="photo"><img src="img/merou.webp" alt="Grégory sur un bateau avec un mérou rouge" loading="lazy"></figure>
-      <figure class="photo color"><img src="img/descente-apnee.webp" alt="Grégory en descente en apnée, palmes vers la surface, dans le grand bleu" loading="lazy"></figure>
+      <figure class="photo"><img src="img/descente-apnee.webp" alt="Grégory en descente en apnée, palmes vers la surface, dans le grand bleu" loading="lazy"></figure>
     </div>
     <div class="offers-sm">''' \
     + offer('coaching-sportif', 'Coaching sportif',
@@ -548,4 +549,70 @@ temoignages = head('Témoignages — En Profondeur',
   </section>
 ''' + CONTACT + footer()
 write('temoignages.html', temoignages)
+# ------------------------------------------------------------------ ÉVÉNEMENTS
+RESA_TAHITI = 'https://www.eleutheratahiti.com/fr/contact'   # lien de réservation
+
+ICON = {
+    'prog': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8c3-2 6 2 9 0s6-2 9 0"/><path d="M3 13c3-2 6 2 9 0s6-2 9 0"/><path d="M3 18c3-2 6 2 9 0s6-2 9 0"/></svg>',
+    'date': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+    'boat': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l2 3h14l2-3H3z"/><path d="M6 17V9h12v8"/><path d="M9 9V6h6v3"/></svg>',
+    'gift': '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="8" width="18" height="13" rx="1.5"/><path d="M12 8v13M3 12h18"/><path d="M12 8c-2-4-6-4-6-1.5S10 8 12 8c2 0 6 1 6-1.5S14 4 12 8z"/></svg>',
+}
+
+WAVE_TOP = '''    <svg class="hero-waves page-waves" viewBox="0 0 1440 600" preserveAspectRatio="none" aria-hidden="true">
+      <path data-wave="fill-top 60 170 2600 0"/><path data-wave="fill-top 44 120 3300 1"/><path data-wave="fill-top 30 70 4100 2"/>
+    </svg>'''
+WAVE_BAND = '''  <div class="wave-band" aria-hidden="true"><svg viewBox="0 0 1440 160" preserveAspectRatio="none"><path data-wave="line 18 60 2200 0"/><path data-wave="line 14 80 2800 1"/><path data-wave="line 22 100 3400 2"/></svg></div>
+'''
+
+evenements = head('Événements — Tahiti Freediving Experience · En Profondeur',
+                  "Tahiti Freediving Experience : une journée d'immersion pour explorer l'apnée, le calme intérieur et vos sensations, encadrée par Grégory Ortiz. 6 participants maximum.") \
+    + header('evenements.html') + f'''
+<main>
+  <section class="page-head">
+{WAVE_TOP}
+    <p class="eyebrow reveal">Stages &amp; journées</p>
+    <h1 class="emerge">Les prochains <em>événements</em></h1>
+    <p class="lead reveal">Des expériences en mer pour vivre l’apnée autrement : respiration, calme intérieur et dépassement de soi.</p>
+  </section>
+{WAVE_BAND}  <section class="event" id="tahiti-freediving">
+    <div class="event-grid">
+      <div class="event-flyer reveal">
+        <a href="img/evenements/tahiti-freediving-experience.webp" target="_blank" rel="noopener" class="flyer" aria-label="Voir le flyer en grand">
+          <img src="img/evenements/tahiti-freediving-experience.webp" alt="Flyer Tahiti Freediving Experience" width="750" height="1059" loading="lazy">
+        </a>
+        <span class="flyer-hint">Cliquer pour agrandir</span>
+      </div>
+      <div class="event-body">
+        <p class="eyebrow reveal">Stage d’apnée · Tahiti</p>
+        <h2 class="reveal">Tahiti Freediving <em>Experience</em></h2>
+        <p class="event-q reveal">Et si vous appreniez à respirer autrement ?</p>
+        <p class="lead reveal">Une journée d’immersion pour explorer l’apnée, le calme intérieur et vos sensations.</p>
+        <div class="event-badges reveal"><span class="badge"><b>6</b> participants max</span><span class="badge">Dès 16 ans</span><span class="badge">Niveau 1 de plongée ou aisance aquatique</span></div>
+
+        <div class="event-coach reveal">
+          <img src="img/sourire.webp" alt="" width="370" height="370">
+          <div><b>Encadré par Grégory Ortiz</b>
+            <ul><li>40 ans de passion</li><li>3 championnats du monde</li><li>Coaching mental et respiratoire</li></ul></div>
+        </div>
+
+        <div class="event-info">
+          <div class="info reveal"><span class="ico">{ICON['prog']}</span><div><b>Au programme</b><p>Respiration · technique · mental.<br>2 séances d’apnée sur câble en mer, à bord du navire <i>Discovery</i>.</p></div></div>
+          <div class="info reveal"><span class="ico">{ICON['date']}</span><div><b>Dates</b><p>Une journée au choix :</p>
+            <div class="dates"><span><em>Décembre</em>5 · 6 · 19 · 20</span><span><em>Janvier</em>9 · 10 · 23 · 24</span><span><em>Février</em>6 · 7 · 20 · 21</span></div></div></div>
+          <div class="info reveal"><span class="ico">{ICON['boat']}</span><div><b>Tout compris</b><p>Repas, boissons, matériel complet (PMT, lestage, combinaison).</p></div></div>
+          <div class="info reveal"><span class="ico">{ICON['gift']}</span><div><b>Bonus offert</b><p>1 h de coaching privé en visio avec Grégory Ortiz (valeur 21 500 F CFP).</p></div></div>
+        </div>
+
+        <div class="event-price reveal">
+          <div><b>49 000 F CFP</b><span>/ personne, tout compris</span></div>
+          <a class="btn teal big" href="{RESA_TAHITI}" target="_blank" rel="noopener">Réservez votre journée ↗</a>
+        </div>
+        <p class="event-org reveal">Organisé avec <b>Tahiti Diving Center</b> · <a href="https://www.eleutheratahiti.com" target="_blank" rel="noopener">eleutheratahiti.com</a> · <a href="mailto:contact@eleutheratahiti.com">contact@eleutheratahiti.com</a> · <a href="tel:+68987776568">87 77 65 68</a></p>
+      </div>
+    </div>
+  </section>
+''' + CONTACT + footer()
+write('evenements.html', evenements)
+
 print('ok', OUT, 'maquette' if MAQUETTE else 'production')

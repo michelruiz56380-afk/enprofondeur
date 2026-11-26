@@ -29,7 +29,7 @@ git -C "$REPO" fetch -q origin hostinger-test || true
 git -C "$REPO" worktree add -q "$WORK/wt" hostinger-test
 cd "$WORK/wt"
 git rm -rq --ignore-unmatch . >/dev/null
-cp "$REPO"/{index,about,coaching,temoignages}.html .
+cp "$REPO"/*.html .
 cp -r "$REPO/assets" "$REPO/img" .
 for f in *.html; do
   sed -i 's#<meta name="viewport" content="width=device-width, initial-scale=1">#&\n<meta name="robots" content="noindex, nofollow">#' "$f"

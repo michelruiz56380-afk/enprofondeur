@@ -434,5 +434,45 @@ h1.emerge em .ch{background-image:linear-gradient(100deg,var(--teal),#9ad8ff 45%
 .page-head>*:not(.page-waves){position:relative;z-index:1}
 .page-waves{left:50%;width:100vw;transform:translateX(-50%);height:min(62vh,520px);top:0}
 
-/* La descente en apnée reste en couleur : le bleu fait la profondeur */
-.strip .photo.color img{filter:none}
+
+/* ---------------- Page Événements ---------------- */
+.event{padding-top:2vh}
+.event-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,90px);align-items:start}
+.event-flyer{position:sticky;top:110px;display:flex;flex-direction:column;align-items:center;gap:14px}
+.flyer{display:block;width:min(360px,100%);border-radius:10px;overflow:hidden;transform:rotate(-3.5deg) translateZ(0);
+  box-shadow:0 2px 0 rgba(255,255,255,.08),0 30px 60px rgba(0,8,30,.55),0 10px 20px rgba(0,8,30,.35);
+  transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s}
+.flyer img{display:block;width:100%;height:auto}
+.flyer:hover{transform:rotate(0) translateY(-8px) scale(1.03);box-shadow:0 2px 0 rgba(255,255,255,.1),0 45px 90px rgba(0,8,30,.6),0 0 60px rgba(91,228,255,.18)}
+.flyer-hint{font-size:.78rem;color:var(--muted);letter-spacing:.06em}
+.event-body h2{max-width:none;margin-bottom:14px}
+.event-q{font-size:clamp(1.2rem,2vw,1.55rem);font-weight:700;letter-spacing:-.01em;margin-bottom:10px}
+.event-badges{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.badge{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:.85rem;background:rgba(8,22,54,.35)}
+.badge b{color:var(--teal);font-size:1rem}
+.event-coach{display:flex;gap:18px;align-items:center;padding:18px 20px;border-radius:20px;background:linear-gradient(160deg,rgba(14,34,80,.55),rgba(6,16,40,.55));border:1px solid var(--line);margin-bottom:26px}
+.event-coach img{width:78px;height:78px;border-radius:50%;object-fit:cover;filter:grayscale(1);flex:none;box-shadow:0 0 0 2px var(--teal)}
+.event-coach b{display:block;color:var(--teal);margin-bottom:4px}
+.event-coach ul{list-style:none;display:grid;gap:2px;color:var(--ink);font-size:.95rem}
+.event-info{display:grid;gap:14px}
+.info{display:flex;gap:16px;align-items:flex-start;padding:4px 0}
+.info .ico{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:var(--teal);background:rgba(91,228,255,.1);border:1px solid rgba(91,228,255,.25)}
+.info b{display:block;margin-bottom:2px}
+.info p{color:var(--muted);font-size:.97rem}
+.dates{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.dates span{border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:.92rem;font-weight:600;background:rgba(8,22,54,.35)}
+.dates em{display:block;font-style:normal;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:2px}
+.event-price{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:32px;padding:24px 26px;border-radius:22px;
+  background:linear-gradient(135deg,rgba(91,228,255,.14),rgba(139,125,255,.12));border:1px solid rgba(91,228,255,.3)}
+.event-price b{display:block;font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.02em}
+.event-price span{color:var(--muted);font-size:.92rem}
+.btn.big{padding:16px 28px;font-size:1.05rem}
+.event-org{margin-top:18px;font-size:.85rem;color:var(--muted)}
+.event-org a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+@media (max-width:900px){
+  .event-grid{grid-template-columns:1fr}
+  .event-flyer{position:relative;top:0}
+  .flyer{width:min(260px,70vw)}
+}
+@media (prefers-reduced-motion:reduce){ .flyer{transform:none} }
+.event-org a{white-space:nowrap}

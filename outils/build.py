@@ -48,8 +48,8 @@ def header(current):
   <a class="logo" href="index.html">EN PROFONDEUR…</a>
   <nav class="menu" aria-label="Navigation principale">{links}</nav>
   <div class="hdr-actions">
-    <button class="btn icon-btn" id="soundBtn" aria-pressed="false" aria-label="Activer l'ambiance sonore" title="Ambiance sonore">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+    <button class="btn icon-btn" id="soundBtn" aria-pressed="false" aria-label="Activer la musique d'ambiance" title="Musique d'ambiance (désactivée par défaut)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
     </button>
     <a class="btn teal" href="#contact">Réserver un appel</a>
     <button class="btn icon-btn burger" id="burger" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
@@ -161,9 +161,9 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
     <p class="eyebrow reveal">Je vous accompagne</p>
     <h2 class="reveal">Aller au fond des choses, <em>ne rien laisser au hasard</em></h2>
     <div class="words">
-      <div class="word reveal"><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.<br><span class="todo">[ texte à valider ]</span></p></div>
-      <div class="word reveal"><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.<br><span class="todo">[ texte à valider ]</span></p></div>
-      <div class="word reveal"><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.<br><span class="todo">[ texte à valider ]</span></p></div>
+      <div class="word reveal"><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.</p></div>
+      <div class="word reveal"><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.</p></div>
+      <div class="word reveal"><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.</p></div>
     </div>
   </section>
 

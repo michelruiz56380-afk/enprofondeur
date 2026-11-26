@@ -70,7 +70,6 @@ Les deux vidéos de témoignages sont lues directement depuis `enprofondeur.fr`.
 - [ ] Faire confirmer par Grégory que l'homme assis à côté de lui dans le teaser accepte d'apparaître sur le site.
 - [ ] Brancher le bouton « Réserver un premier appel » sur un outil de réservation (Cal.com ou Calendly). Il pointe aujourd'hui vers `#`.
 - [ ] Créer la page **Mentions légales**, obligatoire pour un site professionnel en France.
-- [ ] Faire valider par Grégory les textes marqués `[ texte à valider ]` (Intensité / Précision / Connexion).
 - [ ] Faire écrire par Grégory le paragraphe sur son passage de l'apnée au coaching (encadré sur `about.html`).
 - [ ] Confirmer à quoi correspond « 07:12 » sur la photo de la montre d'apnée (record d'apnée statique ?).
 - [ ] Obtenir une version haute définition et non détourée du portrait au bonnet (actuellement 420 × 595 px).

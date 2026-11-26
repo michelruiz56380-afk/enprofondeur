@@ -5,7 +5,8 @@
   let audio = null, progress = 0;
 
   /* ---- Ambiance : l'eau fonce au fil de la page (aucun chiffre affiché) ---- */
-  const stops = [[0,[4,20,50]],[.3,[3,14,38]],[.65,[2,10,28]],[1,[2,7,18]]];
+  // En profondeur : bleu clair en haut, de plus en plus profond en descendant
+  const stops = [[0,[28,112,178]],[.12,[18,86,150]],[.3,[10,56,112]],[.55,[5,30,70]],[.8,[3,14,36]],[1,[2,7,18]]];
   const mix = t => {
     for (let i = 1; i < stops.length; i++) if (t <= stops[i][0]) {
       const [a, ca] = stops[i-1], [b, cb] = stops[i], k = (t - a) / (b - a);
@@ -19,6 +20,7 @@
     progress = Math.min(1, Math.max(0, scrollY / max));
     const [r,g,b] = mix(progress);
     document.body.style.background = `rgb(${r},${g},${b})`;
+    document.documentElement.style.setProperty('--bgnow', `rgb(${r},${g},${b})`);
     hdr && hdr.classList.toggle('scrolled', scrollY > 40);
     if (!reduce){
       if (portrait) portrait.style.transform = `translate(-50%, ${Math.min(scrollY, innerHeight) * .06}px)`;

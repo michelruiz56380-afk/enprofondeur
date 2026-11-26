@@ -129,9 +129,21 @@ index = head('En Profondeur — Coaching avec Grégory Ortiz',
       <p>Faites le premier pas vers votre transformation. Plongez avec moi dans cette aventure où, ensemble, nous explorerons vos profondeurs pour révéler votre potentiel.</p>
       <div class="ctas">
         <a class="btn teal" href="#contact">Réserver un premier appel</a>
-        <a class="btn" href="#approche">Découvrir l’approche</a>
+        <a class="btn" href="#teaser"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Voir le teaser · 54 s</a>
       </div>
     </div>
+  </section>
+
+  <section id="teaser">
+    <p class="eyebrow reveal">En 54 secondes</p>
+    <h2 class="reveal">Plongez <em>avec moi</em></h2>
+    <figure class="teaser reveal">
+      <video id="teaserVideo" preload="metadata" playsinline poster="img/teaser-poster.webp" src="assets/video/teaser.mp4"></video>
+      <button class="teaser-play" id="teaserPlay" aria-label="Lancer le teaser avec le son">
+        <span class="disc"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span>
+        <span class="lbl">Regarder le teaser<small>54 s · avec le son</small></span>
+      </button>
+    </figure>
   </section>
 
   <section id="pour-qui">
@@ -310,6 +322,40 @@ about = head('Qui suis-je ? — Grégory Ortiz · En Profondeur',
         <a class="more" href="coaching.html">Découvrir mes coachings →</a>
       </div>
     </article>
+  </section>
+
+  <section id="medias">
+    <p class="eyebrow reveal">Dans les médias</p>
+    <h2 class="reveal">Ils m’ont <em>tendu le micro</em></h2>
+    <p class="lead reveal">Interviews et podcasts où je raconte mon parcours, la respiration, le mental et la mer.</p>
+    <div class="media-grid">
+      <article class="media-card reveal">
+        <div class="embed video" data-embed="https://www.youtube-nocookie.com/embed/V1ZvX-F8CbA?autoplay=1&amp;rel=0" data-title="Origin Média, entretien avec Grégory Ortiz">
+          <img src="img/medias/yt-origin.webp" alt="" loading="lazy">
+          <button class="embed-play" aria-label="Lire la vidéo"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+        </div>
+        <div class="media-meta"><span class="kind">Vidéo · YouTube</span><h3>Apnéiste, attaque de baleine, AVC : survivre grâce au mental</h3><p>Origin Média</p></div>
+      </article>
+      <article class="media-card reveal">
+        <div class="embed video" data-embed="https://www.youtube-nocookie.com/embed/kgQtx-jkKqg?autoplay=1&amp;rel=0" data-title="Still Point Podcast, épisode 17">
+          <img src="img/medias/yt-stillpoint.webp" alt="" loading="lazy">
+          <button class="embed-play" aria-label="Lire la vidéo"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></button>
+        </div>
+        <div class="media-meta"><span class="kind">Vidéo · YouTube</span><h3>Respirer, plonger dans ses profondeurs, renaître à soi</h3><p>Still Point Podcast · épisode 17</p></div>
+      </article>
+      <article class="media-card audio reveal">
+        <img class="cover" src="img/medias/in-the-air.webp" alt="" loading="lazy">
+        <div class="media-meta"><span class="kind">Podcast · 61 min · octobre 2026</span><h3>La chasse sous-marine, à la frontière de l’air</h3><p>In the Air</p>
+          <div class="embed audio" data-embed="https://open.spotify.com/embed/episode/730JL1DTndHAkJctj1Ofli?autoplay=1" data-height="152" data-title="In the Air, épisode avec Grégory Ortiz"><button class="btn small">▶ Écouter ici</button><a class="ext" href="https://open.spotify.com/episode/730JL1DTndHAkJctj1Ofli" target="_blank" rel="noopener">Ouvrir sur Spotify ↗</a></div>
+        </div>
+      </article>
+      <article class="media-card audio reveal">
+        <img class="cover" src="img/medias/voix-impact.webp" alt="" loading="lazy">
+        <div class="media-meta"><span class="kind">Podcast · 42 min · juillet 2025</span><h3>Respiration, résilience et renaissance</h3><p>Les Voix de l’Impact</p>
+          <div class="embed audio" data-embed="https://www.buzzsprout.com/2458383/17482859?client_source=small_player&amp;iframe=true" data-height="200" data-title="Les Voix de l'Impact, épisode avec Grégory Ortiz"><button class="btn small">▶ Écouter ici</button><a class="ext" href="https://www.buzzsprout.com/2458383/episodes/17482859" target="_blank" rel="noopener">Ouvrir sur Buzzsprout ↗</a></div>
+        </div>
+      </article>
+    </div>
   </section>
 ''' + CONTACT + footer()
 write('about.html', about)

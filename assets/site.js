@@ -133,6 +133,33 @@
     soundBtn.setAttribute('aria-label', audio.on ? "Couper l'ambiance sonore" : "Activer l'ambiance sonore");
   });
 
+  /* ---- Teaser : lecture avec le son au clic ---- */
+  const tv = $('#teaserVideo'), tp = $('#teaserPlay');
+  if (tv && tp){
+    tp.addEventListener('click', () => {
+      tv.controls = true; tv.muted = false;
+      tv.closest('.teaser').classList.add('playing');
+      tv.play();
+    });
+  }
+
+  /* ---- Vidéos et podcasts externes : chargés seulement au clic (pas de cookies avant) ---- */
+  document.querySelectorAll('.embed[data-embed]').forEach(box => {
+    const trigger = box.querySelector('.embed-play, button');
+    trigger && trigger.addEventListener('click', () => {
+      document.querySelectorAll('video').forEach(v => v.pause());
+      const f = document.createElement('iframe');
+      f.src = box.dataset.embed;
+      f.title = box.dataset.title || '';
+      f.allow = 'autoplay; encrypted-media; fullscreen; picture-in-picture; clipboard-write';
+      f.allowFullscreen = true;
+      f.loading = 'lazy';
+      if (box.dataset.height) f.height = box.dataset.height;
+      box.replaceChildren(f);
+      box.classList.add('loaded');
+    });
+  });
+
   /* ---- Une seule vidéo à la fois ---- */
   const vids = [...document.querySelectorAll('video')];
   vids.forEach(v => v.addEventListener('play', () => vids.forEach(o => o !== v && o.pause())));

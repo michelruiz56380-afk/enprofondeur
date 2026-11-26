@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>En Profondeur — Coaching avec Grégory Ortiz</title>
+<meta name="description" content="Coaching de vie et coaching respiration avec Grégory Ortiz. Clarifier, reprendre confiance, retrouver le calme. Premier appel sans engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<canvas id="snow" aria-hidden="true"></canvas>
+
+<header class="site">
+  <a class="logo" href="index.html">EN PROFONDEUR…</a>
+  <nav class="menu" aria-label="Navigation principale"><a href="about.html">Qui suis-je</a><a href="coaching.html">Coachings</a><a href="temoignages.html">Témoignages</a></nav>
+  <div class="hdr-actions">
+    <button class="btn icon-btn" id="soundBtn" aria-pressed="false" aria-label="Activer l'ambiance sonore" title="Ambiance sonore">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/><path d="M19 6a8.5 8.5 0 0 1 0 12"/></svg>
+    </button>
+    <a class="btn teal" href="#contact">Réserver un appel</a>
+    <button class="btn icon-btn burger" id="burger" aria-expanded="false" aria-controls="mobileNav" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h16M4 16h16"/></svg>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav" hidden aria-label="Navigation mobile"><a href="index.html" aria-current="page">Accueil</a><a href="about.html">Qui suis-je</a><a href="coaching.html">Coachings</a><a href="temoignages.html">Témoignages</a><a href="#contact" style="color:var(--teal)">Réserver un appel</a></nav>
+<div class="side-title" aria-hidden="true"><span>Gregory Ortiz en profondeur</span><i></i></div>
+
+<main>
+  <section id="accueil">
+    <div class="hero reveal">
+      <svg class="waves" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path id="w1" fill="rgba(255,255,255,.10)"/><path id="w2" fill="rgba(255,255,255,.08)"/>
+      </svg>
+      <img class="portrait" id="portrait" src="img/portrait.webp" alt="Portrait de Grégory Ortiz" width="420" height="595">
+      <h1>En<span>Profondeur</span></h1>
+      <p class="name">GREGORY ORTIZ<small>Coach de vie · PNL · Respiration</small></p>
+    </div>
+    <div class="hero-text reveal">
+      <strong>Clarifier ce qui vous bloque. Reprendre confiance. Retrouver le calme.</strong>
+      <p>Faites le premier pas vers votre transformation. Plongez avec moi dans cette aventure où, ensemble, nous explorerons vos profondeurs pour révéler votre potentiel.</p>
+      <div class="ctas">
+        <a class="btn teal" href="#contact">Réserver un premier appel</a>
+        <a class="btn" href="#teaser"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg>Voir le teaser · 54 s</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaser">
+    <p class="eyebrow reveal">En 54 secondes</p>
+    <h2 class="reveal">Plongez <em>avec moi</em></h2>
+    <figure class="teaser reveal">
+      <video id="teaserVideo" preload="metadata" playsinline poster="img/teaser-poster.webp" src="assets/video/teaser.mp4"></video>
+      <button class="teaser-play" id="teaserPlay" aria-label="Lancer le teaser avec le son">
+        <span class="disc"><svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></span>
+        <span class="lbl">Regarder le teaser<small>54 s · avec le son</small></span>
+      </button>
+    </figure>
+  </section>
+
+  <section id="pour-qui">
+    <p class="eyebrow reveal">Pour qui</p>
+    <h2 class="reveal">Vous êtes au bon endroit <em>si…</em></h2>
+    <div class="needs">
+      <article class="need reveal"><span class="n">01</span><h3>Vous traversez une mauvaise passe</h3><p>Le professionnel, le personnel et le relationnel s’emmêlent, et vous ne savez plus par où commencer.</p></article>
+      <article class="need reveal"><span class="n">02</span><h3>Le stress s’est installé dans votre corps</h3><p>Tensions, souffle court, nuits agitées : vous voulez reprendre le contrôle de vos émotions.</p></article>
+      <article class="need reveal"><span class="n">03</span><h3>Vous voulez changer de cap</h3><p>Reconversion, nouveau projet, décision importante : vous avez besoin d’y voir clair et d’oser.</p></article>
+      <article class="need reveal"><span class="n">04</span><h3>Vous visez une performance</h3><p>Ironman, boxe, compétition, mer : vous voulez progresser en gardant la tête froide.</p></article>
+    </div>
+  </section>
+
+  <section id="approche">
+    <p class="eyebrow reveal">Je vous accompagne</p>
+    <h2 class="reveal">Aller au fond des choses, <em>ne rien laisser au hasard</em></h2>
+    <div class="words">
+      <div class="word reveal"><h3>Intensité</h3><p>Un engagement total, à 100 % présent pour vous, séance après séance.<br><span class="todo">[ texte à valider ]</span></p></div>
+      <div class="word reveal"><h3>Précision</h3><p>Des outils ajustés en continu selon vos résultats, et des exercices concrets entre les séances.<br><span class="todo">[ texte à valider ]</span></p></div>
+      <div class="word reveal"><h3>Connexion</h3><p>Une écoute sans jugement, qui met à l’aise et permet d’aller là où ça bloque.<br><span class="todo">[ texte à valider ]</span></p></div>
+    </div>
+  </section>
+
+  <section id="qui-suis-je">
+    <div class="recit">
+      <div>
+        <p class="eyebrow reveal">Je vous parle de moi</p>
+        <h2 class="reveal">Ce que la mer <em>m’a appris sur l’humain</em></h2>
+        <p class="lead reveal">Je suis Grégory, passionné par le monde sous-marin et par l’accompagnement humain à travers le coaching et la PNL. Ancien champion de pêche sous-marine et apnéiste confirmé, j’ai toujours cherché à allier mes deux amours : l’océan et l’interaction humaine.</p>
+        <p class="lead reveal" style="margin-top:14px">Pour moi, réussir signifie aller au fond des choses. Que ce soit sous l’eau, où chaque respiration compte, ou lors d’une séance de coaching, où chaque mot a son importance, je cherche à créer une connexion profonde.</p>
+        <a class="more reveal" href="about.html">Lire mon histoire →</a>
+      </div>
+      <div class="collage reveal">
+        <figure class="c1" data-speed=".06"><img src="img/mer.webp" alt="Grégory en mer, en combinaison" loading="lazy"></figure>
+        <figure class="c2" data-speed="-.05"><img src="img/noir-blanc.webp" alt="Portrait noir et blanc de Grégory" loading="lazy"></figure>
+        <figure class="c3" data-speed=".12"><img src="img/bienvenue.webp" alt="Panneau Bienvenue en forme de poisson" loading="lazy"></figure>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact reveal"><b>18 ans</b><span>Plus jeune moniteur de pêche sous-marine de France</span></div>
+      <div class="fact reveal"><b>BPJEPS</b><span>Plongée sans scaphandre</span></div>
+      <div class="fact reveal"><b>PNL</b><span>Coaching et programmation neuro-linguistique</span></div>
+      <div class="fact reveal"><b>Engagé</b><span>Initiation d’enfants malades à l’apnée, sensibilisation à l’écologie marine</span></div>
+    </div>
+  </section>
+
+  <section id="essayer">
+    <p class="eyebrow reveal" style="justify-content:center">Essayez maintenant</p>
+    <h2 class="reveal">Une minute pour <em>relâcher la pression</em></h2>
+    <p class="lead reveal">Trois cycles de respiration guidée. C’est un aperçu de ce que l’on travaille en coaching respiration.</p>
+    <div class="breath reveal" aria-live="polite">
+      <div class="ring"></div>
+      <div class="orb" id="orb"></div>
+      <div><span class="label" id="bLabel">Prêt ?</span><span class="count" id="bCount">3 cycles · 42 s</span></div>
+    </div>
+    <button class="btn teal" id="bStart">Commencer</button>
+    <p class="breath-after" id="bAfter"></p>
+  </section>
+
+  <section id="accompagnements">
+    <p class="eyebrow reveal">Les programmes</p>
+    <h2 class="reveal">Un accompagnement <em>sur mesure</em></h2>
+    <div class="main-offers">
+      <article class="offer reveal">
+        <h3>Coaching de vie</h3>
+        <p>Pour avancer sur un projet, une décision ou une période difficile.</p>
+        <ul class="grow">
+          <li>Clarifier vos objectifs</li>
+          <li>Prendre conscience de vos ressources</li>
+          <li>Renforcer votre confiance et votre efficacité</li>
+        </ul>
+        <div class="price"><div><b>150 €</b> <span>/ séance d’1 h</span><span class="cfp">18 000 CFP</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
+      </article>
+      <article class="offer reveal">
+        <h3>Respiration &amp; relaxation</h3>
+        <p>Un coaching ancré dans le réel, issu de l’expérience de l’apnée, pas d’une théorie abstraite.</p>
+        <ul class="grow">
+          <li>Reprendre le contrôle émotionnel</li>
+          <li>Idéal pour les personnes stressées</li>
+        </ul>
+        <div class="price"><div><b>200 €</b> <span>/ séance d’1 h</span><span class="cfp">24 000 CFP</span></div><a class="btn teal small" href="#contact">Réserver</a></div>
+      </article>
+    </div>
+    <div class="other reveal">
+      <h3>Sport &amp; mer</h3>
+      <p>Pour les sportifs, apnéistes et chasseurs sous-marins.</p>
+      <div class="rows">
+        <a class="row" href="coaching.html#coaching-sportif"><b>Coaching sportif</b><span>Boxe, Ironman et autres disciplines</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-peche"><b>Pêche sous-marine</b><span>Tous niveaux, technique et sécurité</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-apnee"><b>Apnée</b><span>Capacité pulmonaire, endurance, sécurité</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-profondeur"><b>Gagner en profondeur</b><span>Séance d’1 h 30</span><em>150 €<small>18 000 CFP</small></em></a>
+        <a class="row" href="coaching.html#coaching-securite"><b>Sécurité</b><span>Bonnes pratiques sous l’eau · 1 h 30</span><em>150 €<small>18 000 CFP</small></em></a>
+      </div>
+    </div>
+    <a class="more reveal" href="coaching.html">Voir le détail des coachings →</a>
+  </section>
+
+  <section id="temoignages">
+    <p class="eyebrow reveal">Ils vous parlent de leur expérience</p>
+    <h2 class="reveal">Témoignages</h2>
+    <div class="voices">
+      <blockquote class="reveal"><p>« Greg m’a d’abord aidé à démêler le nœud de difficultés qui me paralysait. Après chaque échange, je me sentais soulagé et en confiance. »</p><cite>Léo P.</cite></blockquote>
+      <blockquote class="reveal"><p>« J’ai pris conscience que je ne respirais pas. Par les exercices qu’il m’a conseillés, j’ai repris vie. Ces 3 mois ont changé ma façon de vivre. »</p><cite>Laure</cite></blockquote>
+      <blockquote class="reveal"><p>« Son accompagnement m’a permis d’avoir des clefs que j’utilise encore 3 ans après. J’en suis ressortie grandie ! »</p><cite>Chloé</cite></blockquote>
+    </div>
+    <a class="more reveal" href="temoignages.html">Lire les 7 témoignages et voir les vidéos →</a>
+  </section>
+
+  <section id="contact">
+    <div class="fond">
+      <div>
+        <p class="eyebrow reveal">Premier pas</p>
+        <h2 class="reveal">Explorez vos <em>profondeurs..</em></h2>
+        <p class="lead reveal">Un premier appel, sans engagement, pour faire connaissance et voir si l’accompagnement vous correspond.</p>
+        <ol class="steps reveal">
+          <li>Vous choisissez un créneau</li>
+          <li>On échange sur votre situation et vos objectifs</li>
+          <li>Je vous propose l’accompagnement adapté</li>
+        </ol>
+        <div class="contact-row reveal">
+          <a class="btn teal" href="#" title="À brancher sur Calendly / Cal.com">Réserver un premier appel</a>
+          <a class="btn" href="tel:+33763734512">+33 7 63 73 45 12</a>
+          <a class="btn" href="mailto:info@enprofondeur.fr">info@enprofondeur.fr</a>
+        </div>
+      </div>
+      <div class="round reveal"><img src="img/appel.webp" alt="Grégory Ortiz au téléphone" loading="lazy"></div>
+    </div>
+  </section>
+</main>
+<footer class="site">
+  <span>© Grégory Ortiz · En Profondeur</span>
+  <nav aria-label="Pied de page"><a href="index.html">Accueil</a><a href="about.html">Qui suis-je</a><a href="coaching.html">Coachings</a><a href="temoignages.html">Témoignages</a></nav>
+  <div class="legal"><a href="#" title="Obligatoire : page à créer">Mentions légales [ à créer ]</a><span>Made by mimi</span></div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

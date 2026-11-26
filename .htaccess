@@ -1,0 +1,3 @@
+# Site de test : ne pas indexer, et ne jamais servir le dossier .git
+Header set X-Robots-Tag "noindex, nofollow"
+RedirectMatch 404 /\.git

@@ -39,6 +39,17 @@ cat > .htaccess <<'EOF'
 # Site de test : ne pas indexer, et ne jamais servir le dossier .git
 Header set X-Robots-Tag "noindex, nofollow"
 RedirectMatch 404 /\.git
+
+# Cache navigateur : les pages sont revérifiées à chaque visite ;
+# les fichiers versionnés (?v=empreinte) peuvent être gardés longtemps.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(css|js|webp|png|jpg|mp4)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>
 EOF
 git add -A
 if git diff --cached --quiet; then

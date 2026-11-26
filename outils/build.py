@@ -104,9 +104,26 @@ def footer():
 '''
 
 
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def version_assets(html):
+    """Ajoute ?v=<empreinte du fichier> aux fichiers locaux (css, js, images, vidéo) :
+    dès qu'un fichier change, son adresse change et le navigateur le recharge."""
+    import hashlib, re
+    def repl(m):
+        attr, path = m.group(1), m.group(2)
+        f = os.path.join(ROOT, path)
+        if not os.path.isfile(f):
+            return m.group(0)
+        h = hashlib.md5(open(f, 'rb').read()).hexdigest()[:8]
+        return f'{attr}="{path}?v={h}"'
+    return re.sub(r'(src|href|poster)="((?:assets|img)/[^"?#]+)"', repl, html)
+
+
 def write(name, html):
     with open(os.path.join(OUT, name), 'w', encoding='utf-8') as f:
-        f.write(html)
+        f.write(version_assets(html))
 
 
 # ------------------------------------------------------------------ ACCUEIL

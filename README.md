@@ -23,7 +23,7 @@ Le site est alors visible sur http://localhost:8000.
 | `assets/style.css` | Styles communs aux 4 pages |
 | `assets/site.js` | Effets communs : ambiance sous-marine, particules, respiration guidée, son, menu mobile |
 | `img/` | Images optimisées (format WebP) utilisées par le site |
-| `medias/gregory/` | Photos originales de Grégory, en pleine qualité |
+| `medias/gregory/` | Photos originales de Grégory, en pleine qualité. Les photos avec un enfant (`avec-enfant-dans-eau.jpeg`) et avec des amis (`avec-ami-*`) sont publiées avec l'accord des personnes concernées (et des parents pour l'enfant) |
 | `maquettes/` | Versions précédentes de la maquette (v1 immersive, v2 identité d'origine, v3 orientée coaching) |
 | `outils/build.py` | Script qui a généré les 4 pages : voir plus bas |
 
@@ -47,7 +47,6 @@ Le dépôt est **public**. Les éléments suivants restent hors du dépôt pour 
 - **Les images de démonstration du modèle Slider Revolution.**
 - **Les images génériques ajoutées par l'assistant Hostinger,** et une photo de Grenoble dont l'origine est inconnue.
 - **Le logo baleine** : il vient d'une banque de vecteurs, et sa licence n'autorise probablement pas sa redistribution.
-- **Une photo avec un enfant mineur, et deux photos avec des amis** : accord des personnes nécessaire.
 
 Les deux vidéos de témoignages sont lues directement depuis `enprofondeur.fr`. Leurs fichiers ne sont pas dans le dépôt.
 

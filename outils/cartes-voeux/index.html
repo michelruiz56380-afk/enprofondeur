@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Cartes de vœux</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" id="polices-cartes" href="">
+</head>
+<body>
+<header class="entete">
+  <div>
+    <h1>Cartes de vœux</h1>
+    <p>Une carte personnalisée par client, en PDF à joindre ou en page animée à envoyer en lien.</p>
+  </div>
+  <p class="mode" id="mode"></p>
+</header>
+
+<main class="mise-en-page">
+  <div class="colonne">
+
+    <!-- 1. Charte -->
+    <section class="bloc" id="bloc-charte">
+      <h2><span>1</span> Ma charte graphique</h2>
+      <div class="onglets" role="tablist">
+        <button type="button" role="tab" class="onglet actif" data-onglet="adresse" aria-selected="true">Adresse de mon site</button>
+        <button type="button" role="tab" class="onglet" data-onglet="code" aria-selected="false">Coller le code de ma page</button>
+      </div>
+      <div class="panneau" data-panneau="adresse">
+        <label>Adresse de mon site
+          <span class="ligne"><input type="url" id="charte-url" placeholder="https://www.monsite.fr"><button type="button" id="charte-analyser-url">Analyser</button></span>
+        </label>
+        <p class="aide" id="aide-serveur"></p>
+      </div>
+      <div class="panneau" data-panneau="code" hidden>
+        <label>Code source de ma page
+          <textarea id="charte-code" rows="6" placeholder="Sur votre site : clic droit › Afficher le code source de la page (Ctrl+U ou ⌥⌘U), tout sélectionner, copier, puis coller ici. Le CSS seul fonctionne aussi."></textarea>
+        </label>
+        <label>Adresse de cette page <small>(pour retrouver le logo)</small>
+          <input type="url" id="charte-base" placeholder="https://www.monsite.fr">
+        </label>
+        <button type="button" id="charte-analyser-code">Analyser le code</button>
+      </div>
+      <p class="statut" id="charte-statut" role="status"></p>
+
+      <div class="resultat">
+        <div class="palette" id="palette" aria-label="Couleurs trouvées"></div>
+        <div class="grille4">
+          <label>Principale<input type="color" id="c-principale"></label>
+          <label>Secondaire<input type="color" id="c-secondaire"></label>
+          <label>Fond clair<input type="color" id="c-fond"></label>
+          <label>Texte<input type="color" id="c-texte"></label>
+        </div>
+        <p class="aide">Cliquez une pastille, puis un rôle, pour l'attribuer.</p>
+        <div class="grille2">
+          <label>Police des titres<input id="police-titre" list="liste-polices" placeholder="Playfair Display"></label>
+          <label>Police du texte<input id="police-texte" list="liste-polices" placeholder="Manrope"></label>
+        </div>
+        <datalist id="liste-polices"></datalist>
+        <div class="grille2">
+          <label>Nom de mon entreprise<input id="charte-nom" placeholder="En Profondeur"></label>
+          <label>Signature sur la carte<input id="charte-signature" placeholder="Toute l'équipe d'En Profondeur"></label>
+        </div>
+        <label>Lien vers mon site <small>(bouton sur la carte animée)</small><input type="url" id="charte-site" placeholder="https://www.monsite.fr"></label>
+        <div class="logo-zone">
+          <div class="logo-apercu" id="logo-apercu"><span>Aucun logo</span></div>
+          <div class="logo-actions">
+            <div class="logos-proposes" id="logos-proposes"></div>
+            <label class="bouton-fichier">Choisir un fichier…<input type="file" id="logo-fichier" accept="image/*"></label>
+            <button type="button" class="discret" id="logo-retirer">Retirer le logo</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. La carte -->
+    <section class="bloc" id="bloc-carte">
+      <h2><span>2</span> La carte</h2>
+      <div class="grille2">
+        <label>Année<input type="number" id="annee" min="2000" max="2100"></label>
+        <label>Titre
+          <select id="titre-choix"></select>
+        </label>
+      </div>
+      <label id="titre-perso-zone" hidden>Titre personnalisé<input id="titre-perso" placeholder="Une année pleine de projets"></label>
+      <fieldset>
+        <legend>Modèle</legend>
+        <div class="modeles" id="modeles"></div>
+      </fieldset>
+      <fieldset>
+        <legend>Message pour tous les clients</legend>
+        <div class="messages" id="messages"></div>
+        <textarea id="message-perso" rows="3" placeholder="Votre message. Vous pouvez écrire {prenom}, {nom}, {entreprise}, {annee}." hidden></textarea>
+      </fieldset>
+      <div class="grille2">
+        <label>Formule de dédicace<input id="formule-dedicace" placeholder="Pour {qui}"></label>
+        <label class="case"><input type="checkbox" id="logo-client"> Afficher le logo du client quand il est connu</label>
+      </div>
+      <p class="aide">Variables possibles : {prenom}, {nom}, {entreprise}, {annee}, {anneePrecedente}. Dans la dédicace, {qui} donne « Prénom Nom · Entreprise ».</p>
+    </section>
+
+    <!-- 3. Clients -->
+    <section class="bloc" id="bloc-clients">
+      <h2><span>3</span> Mes clients</h2>
+      <form id="form-client" autocomplete="off">
+        <input type="hidden" id="client-id">
+        <label>Site web du client <small>(facultatif)</small>
+          <span class="ligne"><input type="url" id="client-site" placeholder="https://www.client.fr"><button type="button" id="client-analyser">Récupérer</button></span>
+        </label>
+        <div class="grille2">
+          <label>Prénom<input id="client-prenom"></label>
+          <label>Nom<input id="client-nom"></label>
+        </div>
+        <div class="grille2">
+          <label>Entreprise<input id="client-entreprise"></label>
+          <label>E-mail <small>(pour l'envoi)</small><input type="email" id="client-email"></label>
+        </div>
+        <label>Message
+          <select id="client-message-choix"></select>
+        </label>
+        <textarea id="client-message-perso" rows="3" placeholder="Message rien que pour ce client" hidden></textarea>
+        <label>Mot personnel <small>(ajouté sous le message, en italique)</small>
+          <textarea id="client-note" rows="2" placeholder="Merci encore pour ce beau projet mené ensemble !"></textarea>
+        </label>
+        <input type="hidden" id="client-logo">
+        <p class="aide" id="client-logo-info"></p>
+        <div class="ligne-boutons">
+          <button type="submit" id="client-enregistrer">Ajouter le client</button>
+          <button type="button" class="discret" id="client-annuler" hidden>Annuler</button>
+        </div>
+        <p class="statut" id="client-statut" role="status"></p>
+      </form>
+
+      <details class="import">
+        <summary>Importer une liste (CSV, Excel)</summary>
+        <p class="aide">Une ligne par client, avec en-tête. Colonnes reconnues : prénom, nom, entreprise, site, email, message, mot. Séparateur « ; » ou « , ». Dans Excel : Fichier › Enregistrer sous › CSV.</p>
+        <label class="bouton-fichier">Choisir un fichier CSV…<input type="file" id="csv-fichier" accept=".csv,text/csv,text/plain"></label>
+        <textarea id="csv-texte" rows="4" placeholder="prénom;nom;entreprise;site;email;mot&#10;Marie;Durand;Atelier Durand;https://atelier-durand.fr;marie@atelier-durand.fr;Merci pour cette belle année !"></textarea>
+        <button type="button" id="csv-importer">Importer</button>
+      </details>
+
+      <div class="liste-entete">
+        <p id="compte-clients">Aucun client</p>
+        <button type="button" class="discret danger" id="clients-vider" hidden>Tout effacer</button>
+      </div>
+      <ul class="clients" id="clients"></ul>
+    </section>
+
+    <!-- 4. Export -->
+    <section class="bloc" id="bloc-export">
+      <h2><span>4</span> Export et envoi</h2>
+      <label>Adresse où seront publiées les cartes animées <small>(facultatif)</small>
+        <input type="url" id="base-liens" placeholder="https://www.monsite.fr/voeux-2027/">
+      </label>
+      <p class="aide">Les cartes animées sont des fichiers HTML autonomes : déposez le dossier <code>html</code> sur votre hébergement, à cette adresse. Chaque nom de fichier contient un code aléatoire, pour qu'on ne puisse pas deviner la carte d'un autre client, et les pages ne sont pas indexées par Google.</p>
+      <div class="ligne-boutons">
+        <button type="button" id="export-tout">Tout exporter (ZIP)</button>
+        <button type="button" class="secondaire" id="export-pdf">PDF seulement</button>
+        <button type="button" class="secondaire" id="export-html">HTML seulement</button>
+      </div>
+      <div class="progression" id="progression" hidden><div></div></div>
+      <p class="statut" id="export-statut" role="status"></p>
+      <p class="aide">Le ZIP contient aussi <code>envoi.csv</code> (prénom, nom, e-mail, fichier PDF, lien), prêt pour un publipostage.</p>
+    </section>
+  </div>
+
+  <!-- Aperçu -->
+  <aside class="apercu">
+    <div class="apercu-entete">
+      <h2>Aperçu</h2>
+      <select id="apercu-client" aria-label="Client affiché"></select>
+    </div>
+    <div class="apercu-onglets" role="tablist">
+      <button type="button" class="onglet actif" data-vue="pdf" aria-selected="true">PDF</button>
+      <button type="button" class="onglet" data-vue="anime" aria-selected="false">Animée</button>
+    </div>
+    <div class="cadre-apercu" id="cadre-apercu">
+      <div class="echelle" id="apercu-pdf"></div>
+      <iframe id="apercu-anime" title="Aperçu de la carte animée" hidden></iframe>
+    </div>
+    <div class="ligne-boutons">
+      <button type="button" class="secondaire" id="apercu-rejouer" hidden>Rejouer</button>
+      <button type="button" class="secondaire" id="apercu-telecharger-pdf">Télécharger ce PDF</button>
+      <button type="button" class="secondaire" id="apercu-telecharger-html">Télécharger ce HTML</button>
+    </div>
+  </aside>
+</main>
+
+<!-- Zone hors écran où sont rendues les cartes pour le PDF -->
+<div id="atelier" aria-hidden="true"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="cartes.js"></script>
+<script src="extraction.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

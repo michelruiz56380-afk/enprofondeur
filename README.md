@@ -26,6 +26,7 @@ Le site est alors visible sur http://localhost:8000.
 | `medias/gregory/` | Photos originales de Grégory, en pleine qualité. Les photos avec un enfant (`avec-enfant-dans-eau.jpeg`) et avec des amis (`avec-ami-*`) sont publiées avec l'accord des personnes concernées (et des parents pour l'enfant) |
 | `maquettes/` | Versions précédentes de la maquette (v1 immersive, v2 identité d'origine, v3 orientée coaching) |
 | `outils/build.py` | Script qui a généré les 4 pages : voir plus bas |
+| `outils/cartes-voeux/` | Outil local de cartes de vœux clients (PDF et pages animées) : voir son `LISEZMOI.md`. Non publié avec le site |
 
 ### À propos de `outils/build.py`
 
